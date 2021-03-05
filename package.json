@@ -1,0 +1,19 @@
+{
+  "name": "my-node2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "update":"git add . && git commit -m 'update' && git push"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@journeyapps/sqlcipher": "^5.2.0",
+    "express": "^4.17.1",
+    "js-md5": "^0.7.3",
+    "xlsx": "^0.16.9"
+  }
+}

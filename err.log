@@ -1,0 +1,51 @@
+
+--------12------------------------------------------------------------------------------------------
+Error: SQLITE_ERROR: near "s": syntax error
+--> in Database#run('INSERT INTO "t_def_component_independentService" \n' +
+  '  ("PNCode", "FCCode", "nameCHN", "nameENG", "descriptionCHN", "descriptionENG", "specialTips", "picture", "icon", "type", "subType", "serverModel", "serverName", "serverPN", "serverCategory", "AnnounceDate", "GeneralAvailableDate", "WDAnnounceDate", "WithdrawDate", "comment", "CfgRule", "disable", "priority", "inventory", "inventoryClean", "version", "status") \n' +
+  "  VALUES ('FUB-SERVICE-SLA0', 'SLA0', '人员SLA服务(2/4h到场) （年）', 'Personnel SLA service (2 / 4H arrival)','价格计算方式为“服务器硬件价格*系数”;;\r\n" +
+  'K1 Power S924/S914/S922：硬件出货价格*4.22%;;\r\n' +
+  'K1 Power E950：硬件出货价格*3.11%;;\r\n' +
+  'K1 Power E980：硬件出货价格*2.44%;;\r\n' +
+  '\r\n' +
+  '1、对于服务订单中的硬件设备所发生的宕机故障，IPS将在接到最终用户报修电话后30分钟内响应，并及时赶往最终用户现场提供维护服务：\r\n' +
+  '1)在北京、上海、广州、沈阳、哈尔滨、西安、乌鲁木齐、天津、济南、武汉、长沙、合肥、南昌、南京、杭州、宁波、成都、重庆、昆明、南宁、福州、深圳二十二个城市内，乙方将在2小时内到达现场；\r\n' +
+  '2)在其他地区(除北京、上海、广州、沈阳、哈尔滨、西安、乌鲁木齐、天津、济南、武汉、长沙、合肥、南昌、南京、杭州、宁波、成都、重庆、昆明、南宁、福州、深圳二十二个城市外)，乙方将在交通工具和交通情况允许的情况下在24小时内到达现场；\r\n' +
+  '2、对于服务订单中的硬件设备所发生的非宕机故障，IPS将在接到最终用户报修电话后1小时内响应，并根据甲方要求和实际情况到最终用户现场提供维护服务：\r\n' +
+  '1)在北京、上海、广州、沈阳、哈尔滨、西安、乌鲁木齐、天津、济南、武汉、长沙、合肥、南昌、南京、杭州、宁波、成都、重庆、昆明、南宁、福州、深圳二十二个城市内，乙方将在4小时内到达现场；\r\n' +
+  "2)在其它地区(除北京、上海、广州、沈阳、哈尔滨、西安、乌鲁木齐、天津、济南、武汉、长沙、合肥、南昌、南京、杭州、宁波、成都、重庆、昆明、南宁、福州、深圳二十二个城市外)，乙方将在交通工具和交通情况允许的情况下在48小时内到达现场；' , '1. IPS will respond to the downtime of the hardware equipment in the service order within 30 minutes after receiving the repair call from the end user, and rush to the end user's site in time to provide maintenance service\r\n" +
+  "1) In 22 cities including Beijing, Shanghai, Guangzhou, Shenyang, Harbin, Xi'an, Urumqi, Tianjin, Jinan, Wuhan, Changsha, Hefei, Nanchang, Nanjing, Hangzhou, Ningbo, Chengdu, Chongqing, Kunming, Nanning, Fuzhou and Shenzhen, Party B will arrive at the site within 2 hours;\r\n" +
+  "2) In other areas (except Beijing, Shanghai, Guangzhou, Shenyang, Harbin, Xi'an, Urumqi, Tianjin, Jinan, Wuhan, Changsha, Hefei, Nanchang, Nanjing, Hangzhou, Ningbo, Chengdu, Chongqing, Kunming, Nanning, Fuzhou and Shenzhen), Party B will arrive at the site within 24 hours if the means of transportation and traffic conditions permit;\r\n" +
+  "2. For the non downtime failure of the hardware equipment in the service order, IPS will respond within 1 hour after receiving the repair call from the end user, and provide maintenance service at the end user's site according to Party A's requirements and actual situation\r\n" +
+  "1) In 22 cities including Beijing, Shanghai, Guangzhou, Shenyang, Harbin, Xi'an, Urumqi, Tianjin, Jinan, Wuhan, Changsha, Hefei, Nanchang, Nanjing, Hangzhou, Ningbo, Chengdu, Chongqing, Kunming, Nanning, Fuzhou and Shenzhen, Party B will arrive at the site within 4 hours;\r\n" +
+  "2) In other areas (except Beijing, Shanghai, Guangzhou, Shenyang, Harbin, Xi'an, Urumqi, Tianjin, Jinan, Wuhan, Changsha, Hefei, Nanchang, Nanjing, Hangzhou, Ningbo, Chengdu, Chongqing, Kunming, Nanning, Fuzhou and Shenzhen), Party B will arrive at the site within 48 hours if the means of transportation and traffic conditions permit;', '价格计算方式为“服务器硬件价格*系数”', '', '', 'SERVICE_COMPONENT', 'SERVICE', 'SERV-IPS', 'SERVICE', 'FUM-SERVICE-0000', 'IPS service product', '2020/4/30', '2020/7/10', '2050/1/1', '2050/1/1', NULL, NULL, '0', '0', '100', '1', '1', '0');", [Function (anonymous)])
+    at Database.<anonymous> (C:\test\my-node2\index.js:85:10)
+    at C:\test\my-node2\index.js:82:8
+    at new Promise (<anonymous>)
+    at handleInsert (C:\test\my-node2\index.js:81:10)
+    at handleXlsxConvertSql (C:\test\my-node2\index.js:30:25)
+--------13------------------------------------------------------------------------------------------
+Error: SQLITE_ERROR: near "s": syntax error
+--> in Database#run('INSERT INTO "t_def_component_independentService" \n' +
+  '  ("PNCode", "FCCode", "nameCHN", "nameENG", "descriptionCHN", "descriptionENG", "specialTips", "picture", "icon", "type", "subType", "serverModel", "serverName", "serverPN", "serverCategory", "AnnounceDate", "GeneralAvailableDate", "WDAnnounceDate", "WithdrawDate", "comment", "CfgRule", "disable", "priority", "inventory", "inventoryClean", "version", "status") \n' +
+  "  VALUES ('FUB-SERVICE-SLA1', 'SLA1', '人员SLA服务(3/6h到场) （年）', 'Personnel SLA service (3 / 6H arrival)','价格计算方式为“服务器硬件价格*系数”;;\r\n" +
+  'K1 Power S924/S914/S922：硬件出货价格*3.56%;;\r\n' +
+  'K1 Power E950：硬件出货价格*2.67%;;\r\n' +
+  'K1 Power E980：硬件出货价格*2.22%;;\r\n' +
+  '\r\n' +
+  '1、对于服务订单中的硬件设备所发生的宕机故障，IPS将在接到最终用户报修电话后30分钟内响应，并及时赶往最终用户现场提供维护服务：\r\n' +
+  '1)在北京、上海、广州、沈阳、哈尔滨、西安、乌鲁木齐、天津、济南、武汉、长沙、合肥、南昌、南京、杭州、宁波、成都、重庆、昆明、南宁、福州、深圳二十二个城市内，乙方将在3小时内到达现场；\r\n' +
+  '2)在其他地区(除北京、上海、广州、沈阳、哈尔滨、西安、乌鲁木齐、天津、济南、武汉、长沙、合肥、南昌、南京、杭州、宁波、成都、重庆、昆明、南宁、福州、深圳二十二个城市外)，乙方将在交通工具和交通情况允许的情况下在24小时内到达现场；\r\n' +
+  '2、对于服务订单中的硬件设备所发生的非宕机故障，IPS将在接到最终用户报修电话后1小时内响应，并根据甲方要求和实际情况到最终用户现场提供维护服务：\r\n' +
+  '1)在北京、上海、广州、沈阳、哈尔滨、西安、乌鲁木齐、天津、济南、武汉、长沙、合肥、南昌、南京、杭州、宁波、成都、重庆、昆明、南宁、福州、深圳二十二个城市内，乙方将在6小时内到达现场；\r\n' +
+  "2)在其它地区(除北京、上海、广州、沈阳、哈尔滨、西安、乌鲁木齐、天津、济南、武汉、长沙、合肥、南昌、南京、杭州、宁波、成都、重庆、昆明、南宁、福州、深圳二十二个城市外)，乙方将在交通工具和交通情况允许的情况下在48小时内到达现场；' , '1. IPS will respond to the downtime of the hardware equipment in the service order within 30 minutes after receiving the repair call from the end user, and rush to the end user's site in time to provide maintenance service\r\n" +
+  "1) In 22 cities including Beijing, Shanghai, Guangzhou, Shenyang, Harbin, Xi'an, Urumqi, Tianjin, Jinan, Wuhan, Changsha, Hefei, Nanchang, Nanjing, Hangzhou, Ningbo, Chengdu, Chongqing, Kunming, Nanning, Fuzhou and Shenzhen, Party B will arrive at the site within 3 hours;\r\n" +
+  "2) In other areas (except Beijing, Shanghai, Guangzhou, Shenyang, Harbin, Xi'an, Urumqi, Tianjin, Jinan, Wuhan, Changsha, Hefei, Nanchang, Nanjing, Hangzhou, Ningbo, Chengdu, Chongqing, Kunming, Nanning, Fuzhou and Shenzhen), Party B will arrive at the site within 24 hours if the means of transportation and traffic conditions permit;\r\n" +
+  "2. For the non downtime failure of the hardware equipment in the service order, IPS will respond within 1 hour after receiving the repair call from the end user, and provide maintenance service at the end user's site according to Party A's requirements and actual situation\r\n" +
+  "1) In 22 cities including Beijing, Shanghai, Guangzhou, Shenyang, Harbin, Xi'an, Urumqi, Tianjin, Jinan, Wuhan, Changsha, Hefei, Nanchang, Nanjing, Hangzhou, Ningbo, Chengdu, Chongqing, Kunming, Nanning, Fuzhou and Shenzhen, Party B will arrive at the site within 6 hours;\r\n" +
+  "2) In other areas (except Beijing, Shanghai, Guangzhou, Shenyang, Harbin, Xi'an, Urumqi, Tianjin, Jinan, Wuhan, Changsha, Hefei, Nanchang, Nanjing, Hangzhou, Ningbo, Chengdu, Chongqing, Kunming, Nanning, Fuzhou and Shenzhen), Party B will arrive at the site within 48 hours if the means of transportation and traffic conditions permit;', '价格计算方式为“服务器硬件价格*系数”', '', '', 'SERVICE_COMPONENT', 'SERVICE', 'SERV-IPS', 'SERVICE', 'FUM-SERVICE-0000', 'IPS service product', '2020/4/30', '2020/7/10', '2050/1/1', '2050/1/1', NULL, NULL, '0', '0', '100', '1', '1', '0');", [Function (anonymous)])
+    at Database.<anonymous> (C:\test\my-node2\index.js:85:10)
+    at C:\test\my-node2\index.js:82:8
+    at new Promise (<anonymous>)
+    at handleInsert (C:\test\my-node2\index.js:81:10)
+    at handleXlsxConvertSql (C:\test\my-node2\index.js:30:25)
