@@ -1,7 +1,7 @@
 /*
  * @Description: Express Server
  * @LastEditors: zhangbowen
- * @LastEditTime: 2021-03-05 12:52:53
+ * @LastEditTime: 2021-03-05 14:26:25
  */
 
 const express = require("express");
@@ -37,6 +37,6 @@ app.get("/getSysDB", (req, res) => {
 
 app.listen(8848, e => {
   if (!e) {
-    console.log("启动成功");
+    console.log(`启动成功:http://localhost:8848`);
   }
 });
