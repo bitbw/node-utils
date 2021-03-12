@@ -1,0 +1,14 @@
+(function rule() {
+  class Server {
+    iservicelist = [];
+    iservicecount = 0;
+    serverModel = "";
+    constructor(){
+
+    }
+    CheckRule(){
+        console.log('CheckRule',this.iservicelist);
+    }
+  }
+  return new Server;
+})()
