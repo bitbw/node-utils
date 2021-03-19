@@ -1,15 +1,21 @@
 /*
  * @Description: Express Server
  * @LastEditors: zhangbowen
- * @LastEditTime: 2021-03-05 14:26:25
+ * @LastEditTime: 2021-03-15 17:13:42
  */
 
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const app = express();
-
-app.use(express.static(path.resolve(__dirname, "../../public")));
+// express 使用 connect-history-api-fallback 插件 配合完成 vue-router 的 histroy 模式 
+const history = require('connect-history-api-fallback');
+// history 中间件需要在 express.static 前面使用 不然会无效
+app.use(history());
+// dist 目录为优先公共目录
+app.use(express.static(path.join(__dirname,"../../public/dist/")));
+// 通过 public 下其他文件夹也可以获取内容
+app.use(express.static(path.join(__dirname,"../../public/")));
 // 防止跨域
 app.all("*", function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -27,6 +33,9 @@ app.all("*", function (req, res, next) {
   res.header("Content-Type", "application/json;charset=utf-8");
   next();
 });
+
+
+
 app.get("/getSysDB", (req, res) => {
   res.send({
     version: 2,
