@@ -1,21 +1,14 @@
 /*
  * @Description: Express Server
  * @LastEditors: zhangbowen
- * @LastEditTime: 2021-03-15 17:13:42
+ * @LastEditTime: 2021-04-02 13:12:53
  */
 
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const app = express();
-// express 使用 connect-history-api-fallback 插件 配合完成 vue-router 的 histroy 模式 
-const history = require('connect-history-api-fallback');
-// history 中间件需要在 express.static 前面使用 不然会无效
-app.use(history());
-// dist 目录为优先公共目录
-app.use(express.static(path.join(__dirname,"../../public/dist/")));
-// 通过 public 下其他文件夹也可以获取内容
-app.use(express.static(path.join(__dirname,"../../public/")));
+
 // 防止跨域
 app.all("*", function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -33,16 +26,40 @@ app.all("*", function (req, res, next) {
   res.header("Content-Type", "application/json;charset=utf-8");
   next();
 });
-
-
-
-app.get("/getSysDB", (req, res) => {
+app.get("/out/api/getNewVersion", (req, res) => {
   res.send({
-    version: 2,
-    priceVersion: 2,
-    url: "http://localhost:8848/download/iconfig_sys.config"
+    code: "200",
+    paramsVaildtor: null,
+    obj: {
+      versionType: 0,
+      versionDesc: "3月例行数据包更新-with ver1.5.1",
+      releaseDate: "2021-04-01 15:41:31",
+      downloadUrl:
+        "http://218.57.146.118:8080/sys-iconfig/prod/iconfig_sys.config",
+      isSend: 1,
+      id: 101,
+      versionHash: "null",
+      isPublish: 1,
+      disables: 1,
+      versionCode: "1.1.39-20210401-0A",
+      versionIdent: 2,
+      createDate: "2021-04-01 15:41:24"
+    },
+    message: "数据查询成功",
+    isNULLSearch: null,
+    token: null,
+    isShow: null
   });
 });
+
+// express 使用 connect-history-api-fallback 插件 配合完成 vue-router 的 histroy 模式
+const history = require("connect-history-api-fallback");
+// history 中间件需要在 express.static 前面使用 不然会无效
+app.use(history());
+// dist 目录为优先公共目录
+app.use(express.static(path.join(__dirname, "../../public/dist/")));
+// 通过 public 下其他文件夹也可以获取内容
+app.use(express.static(path.join(__dirname, "../../public/")));
 
 app.listen(8848, e => {
   if (!e) {
