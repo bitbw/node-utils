@@ -8,27 +8,24 @@ const {
   oneMonth,
   oneYear
 } = require("../utils/date/index.js");
-const getDate = (timestamp) => DateFormat("YYYY-MM-DD")(new Date(timestamp));
+const getDate = timestamp => DateFormat("YYYY-MM-DD")(new Date(timestamp));
 const currentTimestamp = Date.now();
 const dbPath = path.resolve(
   `C:/Users/WX03/Desktop/iConfig开发/根据退市时间设置状态`,
   `iconfig_sys.config`
 );
-const { handleExecSql,handleGetAll } = require("./index");
+const { handleExecSql, handleGetAll } = require("./index");
 const DB = new sqlite3.Database(dbPath);
 
-async function handleUpdateDate() {
-  let querySql = `SELECT * FROM t_def_component_listprice`;
+async function handleUpdateDate(table, keys = ["PNCode"]) {
+  let querySql = `SELECT * FROM ${table}`;
+  console.time("get");
   let res = await handleGetAll(querySql, DB);
+  console.timeEnd("get");
   if (res && res.length) {
     let updateSql = "";
-    let counter = -1;
+    let counter = 0;
     for (const [index, row] of res.entries()) {
-      if ((index + 1) % 6 == 0) {
-        counter = 0;
-      } else {
-        counter++;
-      }
       let types = [
         "UNLISTED",
         "NORMAL",
@@ -37,19 +34,27 @@ async function handleUpdateDate() {
         "DELISTING2",
         "DELISTED"
       ];
-      updateSql += getSql(row, types[counter]);
+      let type = types[counter];
+      updateSql += getSql(row, type, table, keys);
+      counter++;
+      if (counter >= types.length) {
+        counter = 0;
+      }
     }
-    console.log("Bowen: handleUpdateDate -> updateSql", updateSql)
+    // console.log("Bowen: handleUpdateDate -> updateSql", updateSql);
     try {
-        await handleExecSql(updateSql, DB);
+      console.time("set");
+      await handleExecSql(updateSql, DB);
+      console.timeEnd("set");
     } catch (error) {
-        console.log("Bowen: handleUpdateDate -> error", error)
+      console.log("Bowen: handleUpdateDate -> error", error);
     }
   }
 }
 
-function getSql(row, type) {
-  let sql = "UPDATE t_def_component_listprice SET ";
+function getSql(row, type, table, keys) {
+  console.log("Bowen: getSql -> type", type);
+  let sql = `UPDATE ${table} SET `;
   switch (type) {
     case "UNLISTED":
       sql += `
@@ -103,12 +108,20 @@ function getSql(row, type) {
     default:
       break;
   }
-  sql += `WHERE FCCode='${row.FCCode}' AND PNCode='${row.PNCode}' ;`;
-  sql = sql.replace(/\n|\s+ /g,' ');
-  return sql
+  sql += `WHERE `;
+  for (const [index, key] of keys.entries()) {
+    if (index > 0) {
+      sql += " AND ";
+    }
+    sql += ` ${key}='${row[key]}'`;
+  }
+  sql += ";";
+  sql = sql.replace(/\n|\s+ /g, " ");
+  return sql;
 }
 
-handleUpdateDate();
+handleUpdateDate("t_def_product_info", ["PNCode", "status"]);
+// handleUpdateDate("t_def_component_listprice",["FCCode","PNCode"]);
 module.exports = {
   handleUpdateDate
 };
