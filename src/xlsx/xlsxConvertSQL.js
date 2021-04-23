@@ -1,7 +1,7 @@
 /*
  * @Description: xlsxConvertSQL  转换 xlsx 成 sql
- * @LastEditors: zhangbowen
- * @LastEditTime: 2021-03-12 16:38:17
+ * @LastEditors: Bowen
+ * @LastEditTime: 2021-04-23 14:27:18
  */
 
 // 是否是 价格表
@@ -43,8 +43,30 @@ async function handleXlsxConvertSql() {
       listpriceUSD: toFixed(sheet[`D${i}`].v),
       listpriceRMB: toFixed(sheet[`E${i}`].v)
     };
+    const {
+      PNCode,
+      FCCode,
+      nameCHN,
+      nameENG,
+      descriptionCHN,
+      descriptionENG,
+      specialTips,
+      listpriceUSD,
+      listpriceRMB
+    } = sqlInfo;
+    let sql = "";
+    if (forPriceTable) {
+      sql = `INSERT INTO 't_def_component_listprice' 
+              (PNCode, FCCode, nameCHN, nameENG, listpriceUSD, listpriceRMB, costUSD, costRMB, taxRate, category, attribute, type, subType, serverModel, serverName, serverPN, serverCategory, priceVersion, version, status) 
+      VALUES ('${PNCod}', '${FCCode}', '${nameCHN}', '${nameENG}', '${listpriceUSD}', '${listpriceRMB}', '0', '0', '0.13', 'IPS service product', 'COMPONENT', 'SERVICE_COMPONENT', 'SERVICE', 'SERV-IPS', 'SERVICE', 'FUM-SERVICE-0000', 'IPS service product', '1', '1', '0');`;
+    } else {
+      sql = `INSERT INTO 't_def_component_independentService' 
+      (PNCode, FCCode, nameCHN, nameENG, descriptionCHN, descriptionENG, specialTips, picture, icon, type, subType, serverModel, serverName, serverPN, serverCategory, AnnounceDate, GeneralAvailableDate, WDAnnounceDate, WithdrawDate, comment, CfgRule, disable, priority, inventory, inventoryClean, version, status) 
+      VALUES ('${PNCode}', '${FCCode}', '${nameCHN}', '${nameENG}','${descriptionCHN}' , "${descriptionENG}", '${specialTips}', '', '', 'SERVICE_COMPONENT', 'SERVICE', 'SERV-IPS', 'SERVICE', 'FUM-SERVICE-0000', 'IPS service product', '2020/4/30', '2020/7/10', '2050/1/1', '2050/1/1', NULL, NULL, '0', '0', '100', '1', '1', '0');`;
+    }
+    sql = sql.replace(/\n/g, "");
     try {
-      const sql = await handleInsert(sqlInfo);
+      await handleInsert(sql);
       let log = "";
       try {
         log = await fs.readFile(path.resolve(__dirname, "main.log"), "utf8");
@@ -57,12 +79,14 @@ async function handleXlsxConvertSql() {
           )
           .concat(sql)
       );
+      console.log("success 插入成功");
     } catch (error) {
       let log = "";
       try {
         log = await fs.readFile(path.resolve(__dirname, "err.log"), "utf8");
       } catch (error) {}
       console.log("Bowen: handleXlsxConvertSql -> error", error);
+      console.log("Bowen: sql", sql);
       fs.writeFile(
         path.resolve(__dirname, "err.log"),
         log
@@ -80,33 +104,13 @@ async function handleXlsxConvertSql() {
  * @param {*} sqlInfo
  * @return { Promise } resolve 中 包含当前执行 sql
  */
-function handleInsert(sqlInfo) {
-  const {
-    PNCode,
-    FCCode,
-    nameCHN,
-    nameENG,
-    descriptionCHN,
-    descriptionENG,
-    specialTips,
-    listpriceUSD,
-    listpriceRMB
-  } = sqlInfo;
-  let sql = "";
-  if (forPriceTable) {
-    sql = `INSERT INTO "t_def_component_listprice" 
-            ("PNCode", "FCCode", "nameCHN", "nameENG", "listpriceUSD", "listpriceRMB", "costUSD", "costRMB", "taxRate", "category", "attribute", "type", "subType", "serverModel", "serverName", "serverPN", "serverCategory", "priceVersion", "version", "status") 
-    VALUES ("${PNCode}", "${FCCode}", "${nameCHN}", "${nameENG}", "${listpriceUSD}", "${listpriceRMB}", '0', '0', '0.13', 'IPS service product', 'COMPONENT', 'SERVICE_COMPONENT', 'SERVICE', 'SERV-IPS', 'SERVICE', 'FUM-SERVICE-0000', 'IPS service product', '1', '1', '0');`;
-  } else {
-    sql = `INSERT INTO "t_def_component_independentService" 
-    ("PNCode", "FCCode", "nameCHN", "nameENG", "descriptionCHN", "descriptionENG", "specialTips", "picture", "icon", "type", "subType", "serverModel", "serverName", "serverPN", "serverCategory", "AnnounceDate", "GeneralAvailableDate", "WDAnnounceDate", "WithdrawDate", "comment", "CfgRule", "disable", "priority", "inventory", "inventoryClean", "version", "status") 
-    VALUES ("${PNCode}", "${FCCode}", "${nameCHN}", "${nameENG}","${descriptionCHN}" , "${descriptionENG}", "${specialTips}", '', '', 'SERVICE_COMPONENT', 'SERVICE', 'SERV-IPS', 'SERVICE', 'FUM-SERVICE-0000', 'IPS service product', '2020/4/30', '2020/7/10', '2050/1/1', '2050/1/1', NULL, NULL, '0', '0', '100', '1', '1', '0');`;
-  }
+function handleInsert(sql) {
+  // console.log("Bowen: handleInsert -> sql", sql)
   return new Promise((resolve, reject) => {
     DB.serialize(() => {
       // 打开数据库
       DB.run("PRAGMA cipher_compatibility = 4", e => e && reject(e));
-      DB.run(`PRAGMA key = "IPS@@@IPS@@@DB"`, e => e && reject(e));
+      DB.run(`PRAGMA key = 'IPS@@@IPS@@@DB'`, e => e && reject(e));
       DB.run(sql, e => {
         if (e) {
           reject(e);

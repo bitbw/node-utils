@@ -1,7 +1,7 @@
 /*
  * @Description: 清空表 并 重置下标
- * @LastEditors: zhangbowen
- * @LastEditTime: 2021-03-05 12:59:48
+ * @LastEditors: Bowen
+ * @LastEditTime: 2021-04-22 16:59:24
  */
 
 
@@ -10,7 +10,6 @@ const fs = require("fs").promises;
 const os = require("os");
 const sqlite3 = require("@journeyapps/sqlcipher").verbose();
 const dbPath = path.resolve(os.homedir(), `iConfig/iconfig_sys.config`);
-"".replace;
 const DB = new sqlite3.Database(dbPath);
 
 /**

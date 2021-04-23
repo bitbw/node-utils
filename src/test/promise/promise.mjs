@@ -1,8 +1,10 @@
 /*
  * @Description: Promise Test
- * @LastEditors: zhangbowen
- * @LastEditTime: 2021-03-29 19:51:49
+ * @LastEditors: Bowen
+ * @LastEditTime: 2021-04-23 14:29:20
  */
+
+
 
 
   export function Delay(time = 0){
