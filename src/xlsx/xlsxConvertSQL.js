@@ -1,17 +1,18 @@
 /*
  * @Description: xlsxConvertSQL  转换 xlsx 成 sql
  * @LastEditors: Bowen
- * @LastEditTime: 2021-04-23 14:27:18
+ * @LastEditTime: 2021-05-07 17:09:12
  */
 
 // 是否是 价格表
 let forPriceTable = false;
 
 const path = require("path");
-const fs = require("fs").promises;
 const os = require("os");
 const sqlite3 = require("@journeyapps/sqlcipher").verbose();
 const XLSX = require("xlsx");
+const Logger = require('../logger/logger')
+
 const { toFixed } = require("../utils/number/index");
 const xlsxPath = path.resolve(
   __dirname,
@@ -65,36 +66,16 @@ async function handleXlsxConvertSql() {
       VALUES ('${PNCode}', '${FCCode}', '${nameCHN}', '${nameENG}','${descriptionCHN}' , "${descriptionENG}", '${specialTips}', '', '', 'SERVICE_COMPONENT', 'SERVICE', 'SERV-IPS', 'SERVICE', 'FUM-SERVICE-0000', 'IPS service product', '2020/4/30', '2020/7/10', '2050/1/1', '2050/1/1', NULL, NULL, '0', '0', '100', '1', '1', '0');`;
     }
     sql = sql.replace(/\n/g, "");
+    const logger = new Logger({
+      path:path.resolve(__dirname,'main.log'),
+      perfix:`${i}----------\n`,
+      console: true
+    })
     try {
       await handleInsert(sql);
-      let log = "";
-      try {
-        log = await fs.readFile(path.resolve(__dirname, "main.log"), "utf8");
-      } catch (error) {}
-      await fs.writeFile(
-        path.resolve(__dirname, "main.log"),
-        log
-          .concat(
-            `\n--------${i}------------------------------------------------------------------------------------------\n`
-          )
-          .concat(sql)
-      );
-      console.log("success 插入成功");
+      logger.success(sql)
     } catch (error) {
-      let log = "";
-      try {
-        log = await fs.readFile(path.resolve(__dirname, "err.log"), "utf8");
-      } catch (error) {}
-      console.log("Bowen: handleXlsxConvertSql -> error", error);
-      console.log("Bowen: sql", sql);
-      fs.writeFile(
-        path.resolve(__dirname, "err.log"),
-        log
-          .concat(
-            `\n--------${i}------------------------------------------------------------------------------------------\n`
-          )
-          .concat(error.stack)
-      );
+      logger.error(error.stack)
     }
   }
 }
