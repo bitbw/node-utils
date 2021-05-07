@@ -1,7 +1,7 @@
 /*
  * @Description: 清空表 并 重置下标
  * @LastEditors: Bowen
- * @LastEditTime: 2021-04-22 16:59:24
+ * @LastEditTime: 2021-04-30 14:35:26
  */
 
 
@@ -9,7 +9,8 @@ const path = require("path");
 const fs = require("fs").promises;
 const os = require("os");
 const sqlite3 = require("@journeyapps/sqlcipher").verbose();
-const dbPath = path.resolve(os.homedir(), `iConfig/iconfig_sys.config`);
+// const dbPath = path.resolve(os.homedir(), `iConfig/iconfig_sys.config`);
+const dbPath = path.resolve(os.homedir(), `iConfig_TEST/iconfig_user.config`);
 const DB = new sqlite3.Database(dbPath);
 
 /**
@@ -54,11 +55,15 @@ function handleExecSql(sql) {
   });
 }
 
-
+/**
+ * @description: 清空多个表
+ * @param {*} tables 表名称数组
+ * @return {*}
+ */
 function hendleClearTable(tables) {
   for (const table of tables) {
     clearTable(table);
   }
 }
 
-hendleClearTable(["t_def_component_independentService"]);
+hendleClearTable(["t_config_info","t_config_component"]);

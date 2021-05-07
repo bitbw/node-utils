@@ -1,7 +1,7 @@
 /*
  * @Description: 日志
  * @LastEditors: Bowen
- * @LastEditTime: 2021-05-07 16:48:25
+ * @LastEditTime: 2021-05-07 17:08:37
  */
 
 const fs = require("fs").promises;
@@ -32,14 +32,14 @@ class Logger {
     return `${date.getFullYear()}-${month}-${day} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
   }
   async warn(info) {
-    const data = `${this.perfix}${this.getDate()} [WARN]` + info + this.suffix;
+    const data = `\n${this.perfix}${this.getDate()} [WARN]` + info + this.suffix;
     await this.write(data);
     if (this.console) {
       console.warn(data);
     }
   }
   async info(info) {
-    const data = `${this.perfix}${this.getDate()} [INFO]` + info + this.suffix;
+    const data = `\n${this.perfix}${this.getDate()} [INFO]` + info + this.suffix;
     await this.write(data);
     if (this.console) {
       console.log(data);
@@ -47,7 +47,7 @@ class Logger {
   }
   async success(info) {
     const data =
-      `${this.perfix}${this.getDate()} [SUCCESS]` + info + this.suffix;
+      `\n${this.perfix}${this.getDate()} [SUCCESS]` + info + this.suffix;
     await this.write(data);
     if (this.console) {
       console.log(data);
@@ -55,7 +55,7 @@ class Logger {
   }
   async error(info) {
     const data =
-      `${
+      `\n${
         this.perfix
       }${this.getDate()} [ERROR]\n------Error Stack Begin------\n` +
       info +
@@ -70,16 +70,16 @@ class Logger {
     try {
       const log = await fs.readFile(this.path);
       // 大于 1M 进行备份
-      if (log.length > 1 * 1024 ) {
-        // 重命名
+      if (log.length > 1 * 1024 * 1024 ) {
+        // 重命名 ： backuplog2021_01_12_12_01_12.log
         const newPath = path.resolve(
           path.dirname(this.path),
-          `backuplog${this.getDate()}.log`
+          `backuplog${this.getDate().replace(/\s|:|-/g,"_")}.log`
         );
         await fs.rename(this.path, newPath);
       }
     } catch (error) {
-      console.log("Bowen: Logger -> write -> error", error);
+      console.log("[日志备份失败]", error);
     }
     try {
       await fs.writeFile(this.path, data, { flag: "a+" });

@@ -16,7 +16,12 @@ const dbPath = path.resolve(
 );
 const { handleExecSql, handleGetAll } = require("./index");
 const DB = new sqlite3.Database(dbPath);
-
+/**
+ * @description: 查找表的数据并将Date字段全都更新
+ * @param {*} table 要更新的表
+ * @param {*} keys  WHERE 的判断值数组
+ * @return {*}
+ */
 async function handleUpdateDate(table, keys = ["PNCode"]) {
   let querySql = `SELECT * FROM ${table}`;
   console.time("get");
@@ -26,14 +31,31 @@ async function handleUpdateDate(table, keys = ["PNCode"]) {
     let updateSql = "";
     let counter = 0;
     for (const [index, row] of res.entries()) {
+      // let types = [
+      //   "UNLISTED",
+      //   "NORMAL",
+      //   "NORMAL2",
+      //   "DELISTING",
+      //   "DELISTING2",
+      //   "DELISTED",
+      //   "DELISTED",
+      // ];
       let types = [
-        "UNLISTED",
-        "NORMAL",
-        "NORMAL2",
-        "DELISTING",
-        "DELISTING2",
-        "DELISTED"
+        "DELISTED",
+        "DELISTED",
+        "DELISTED",
+        "DELISTED",
+        "DELISTED",
+        "DELISTED",
       ];
+      // let types = [
+      //   "NORMAL",
+      //   "NORMAL2",
+      //   "DELISTING",
+      //   "DELISTING2",
+      //   "DELISTED",
+      //   "DELISTED",
+      // ];
       let type = types[counter];
       updateSql += getSql(row, type, table, keys);
       counter++;
@@ -120,8 +142,8 @@ function getSql(row, type, table, keys) {
   return sql;
 }
 
-handleUpdateDate("t_def_product_info", ["PNCode", "status"]);
-// handleUpdateDate("t_def_component_listprice",["FCCode","PNCode"]);
+// handleUpdateDate("t_def_product_info", ["PNCode", "status"]);
+handleUpdateDate("t_def_component_listprice",["FCCode","PNCode"]);
 module.exports = {
   handleUpdateDate
 };

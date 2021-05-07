@@ -1,3 +1,13 @@
+/*
+ * @Description: test 多个用过sql的汇总
+ * @Autor: Bowen
+ * @Date: 2021-03-05 11:12:40
+ * @LastEditors: Bowen
+ * @LastEditTime: 2021-04-30 14:35:58
+ */
+
+
+
 // 字符串排序方法
 let a = ['上海2', '北京1', '上海1', 'a', 'abc2', 'c1', 'ba1', 'b4', 'c2'];
 a.sort((a, b) => {

@@ -1,3 +1,4 @@
+// 执行对应sql
 function handleExecSql(sql, DB) {
   return new Promise((resolve, reject) => {
     DB.serialize(() => {
@@ -10,6 +11,7 @@ function handleExecSql(sql, DB) {
     });
   });
 }
+// 查找全部数据
 function handleGetAll(sql, DB) {
   return new Promise((resolve, reject) => {
     DB.serialize(() => {
