@@ -1,9 +1,12 @@
 /*
  * @Description: xlsxConvertSQL  转换 xlsx 成 sql
  * @LastEditors: Bowen
- * @LastEditTime: 2021-05-07 17:09:12
+ * @LastEditTime: 2021-05-07 18:59:44
  */
-
+// (async function () {
+//   let Logger  = await import('../logger/logger.mjs')
+//   console.log("Bowen: Logger", Logger)
+// })()
 // 是否是 价格表
 let forPriceTable = false;
 
@@ -11,7 +14,7 @@ const path = require("path");
 const os = require("os");
 const sqlite3 = require("@journeyapps/sqlcipher").verbose();
 const XLSX = require("xlsx");
-const Logger = require('../logger/logger')
+// const Logger = require('../logger/logger')
 
 const { toFixed } = require("../utils/number/index");
 const xlsxPath = path.resolve(
@@ -65,17 +68,18 @@ async function handleXlsxConvertSql() {
       (PNCode, FCCode, nameCHN, nameENG, descriptionCHN, descriptionENG, specialTips, picture, icon, type, subType, serverModel, serverName, serverPN, serverCategory, AnnounceDate, GeneralAvailableDate, WDAnnounceDate, WithdrawDate, comment, CfgRule, disable, priority, inventory, inventoryClean, version, status) 
       VALUES ('${PNCode}', '${FCCode}', '${nameCHN}', '${nameENG}','${descriptionCHN}' , "${descriptionENG}", '${specialTips}', '', '', 'SERVICE_COMPONENT', 'SERVICE', 'SERV-IPS', 'SERVICE', 'FUM-SERVICE-0000', 'IPS service product', '2020/4/30', '2020/7/10', '2050/1/1', '2050/1/1', NULL, NULL, '0', '0', '100', '1', '1', '0');`;
     }
+    const { default: Logger } = await import("../logger/logger.mjs");
     sql = sql.replace(/\n/g, "");
     const logger = new Logger({
-      path:path.resolve(__dirname,'main.log'),
-      perfix:`${i}----------\n`,
+      path: path.resolve(__dirname, "main.log"),
+      perfix: `${i}----------\n`,
       console: true
-    })
+    });
     try {
       await handleInsert(sql);
-      logger.success(sql)
+      logger.success(sql);
     } catch (error) {
-      logger.error(error.stack)
+      logger.error(error.stack);
     }
   }
 }
