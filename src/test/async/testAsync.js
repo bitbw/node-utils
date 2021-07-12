@@ -1,12 +1,36 @@
 /*
  * @Description: 测试async的执行
- * @LastEditors: zhangbowen
- * @LastEditTime: 2021-03-26 09:05:34
+ * @LastEditors: Bowen
+ * @LastEditTime: 2021-06-28 09:25:55
  */
 
-
 (async function name(params) {
-    console.time('testForEach')
-    await new Promise(r => setTimeout(r,1000))
-    console.timeEnd('testForEach')
-})()
+  fetch;
+  console.time("testForEach");
+  //   await new Promise(r => setTimeout(r, 1000));
+  console.timeEnd("testForEach");
+  let api = new Promise((resolve, reject) => {
+    let flag = false;
+    setTimeout(() => {
+      if (flag) {
+        resolve(true);
+      } else {
+        reject("错误了！！");
+      }
+    }, 100);
+  });
+  let res = await api
+    .catch(err => {
+      console.log("Bowen: name -> err", err);
+    })
+    .finally(res => {
+      console.log("finally -> res", res);
+    });
+  console.log("Bowen: name -> res", res);
+})();
+async function getTitle(url) {
+  let response = await fetch(url);
+  let html = await response.text();
+  return html.match(/<title>([\s\S]+)<\/title>/i)[1];
+}
+getTitle("https://tc39.github.io/ecma262/").then(console.log);

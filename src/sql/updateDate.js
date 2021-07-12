@@ -6,7 +6,7 @@ const { DateFormat, oneDay, oneMonth, oneYear, oneHours } = require("../utils/da
 const getDate = timestamp => DateFormat("YYYY-MM-DD hh:mm:ss")(new Date(timestamp));
 let dateISO = new Date(DateFormat("YYYY-MM-DD")()).valueOf()
 const currentTimestamp = dateISO - ( oneHours * 8);
-let dirpath = `C:/Users/WX03/iConfig_TEST`
+let dirpath = `C:/Users/WX03/iConfig`
 // let dirpath = `C:/Users/WX03/Desktop/iConfig开发/根据退市时间设置状态/test`
 const dbPath = path.resolve(dirpath, `iconfig_sys.config`);
 const { handleExecSql, handleGetAll } = require("./index");
