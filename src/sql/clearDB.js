@@ -1,7 +1,7 @@
 /*
  * @Description: 清空表 并 重置下标
  * @LastEditors: Bowen
- * @LastEditTime: 2021-05-27 17:24:55
+ * @LastEditTime: 2021-07-22 10:18:03
  */
 
 
@@ -66,4 +66,4 @@ function hendleClearTable(tables) {
   }
 }
 
-hendleClearTable(["t_config_info","t_config_component","t_schema_product_list"]);
+hendleClearTable(["t_config_info","t_config_component","t_schema_product_list","t_schema_info"]);

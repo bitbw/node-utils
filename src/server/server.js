@@ -1,13 +1,32 @@
 /*
  * @Description: Express Server
  * @LastEditors: Bowen
- * @LastEditTime: 2021-05-28 15:17:17
+ * @LastEditTime: 2021-07-19 15:40:12
  */
 
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const app = express();
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost:27017/test", { useNewUrlParser: true, useUnifiedTopology: true });
+// 集合
+const Cat = mongoose.model("Cat", { name: String });
+//一条数据
+// (async function () {
+//   for (let i = 0; i < 11; i++) {
+//     await new Cat({ name: "Zildjian" + i }).save()
+//     console.log("meow");
+//   }
+// })();
+
+// const kitty = new Cat({ name: "Zildjian" });
+// kitty
+//   .save()
+//   .then(res => console.log("meow", res))
+//   .catch(err => {
+//     console.log("err", err);
+//   });
 
 // 防止跨域
 app.all("*", function (req, res, next) {
@@ -34,8 +53,7 @@ app.get("/out/api/getNewVersion", (req, res) => {
       versionType: 0,
       versionDesc: "3月例行数据包更新-with ver1.5.1",
       releaseDate: "2021-04-01 15:41:31",
-      downloadUrl:
-        "http://218.57.146.118:8080/sys-iconfig/prod/iconfig_sys.config",
+      downloadUrl: "http://218.57.146.118:8080/sys-iconfig/prod/iconfig_sys.config",
       isSend: 1,
       id: 101,
       versionHash: "null",
@@ -51,15 +69,29 @@ app.get("/out/api/getNewVersion", (req, res) => {
     isShow: null
   });
 });
+app.get("/cat", (req, res) => {
+  Cat.find(function (err, kittens) {
+    if (err) return console.error(err);
+    console.log(kittens);
+    // Cat.findOneAndUpdate({ name: kittens[0].name}, { name: 'jason bourne' }, (err,res)=>{
+    // console.log("findOneAndUpdate: err,res", err,res)
+    // })
+    kittens[0].name = "hello kity"
+    kittens[0].save()
+    for (let cat of kittens) {
+      console.log("name", cat.name);
+    }
+  });
+});
 
-// express 使用 connect-history-api-fallback 插件 配合完成 vue-router 的 histroy 模式
-const history = require("connect-history-api-fallback");
-// history 中间件需要在 express.static 前面使用 不然会无效
-app.use(history());
-// dist 目录为优先公共目录
-app.use(express.static(path.join(__dirname, "../../public/dist/")));
-// 通过 public 下其他文件夹也可以获取内容
-app.use(express.static(path.join(__dirname, "../../public/")));
+// // express 使用 connect-history-api-fallback 插件 配合完成 vue-router 的 histroy 模式
+// const history = require("connect-history-api-fallback");
+// // history 中间件需要在 express.static 前面使用 不然会无效
+// app.use(history());
+// // dist 目录为优先公共目录
+// app.use(express.static(path.join(__dirname, "../../public/dist/")));
+// // 通过 public 下其他文件夹也可以获取内容
+// app.use(express.static(path.join(__dirname, "../../public/")));
 
 app.listen(8848, e => {
   if (!e) {
