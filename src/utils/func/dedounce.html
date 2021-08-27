@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      id="content"
+      style="
+        height: 150px;
+        line-height: 150px;
+        text-align: center;
+        color: #fff;
+        background-color: #ccc;
+        font-size: 80px;
+      "
+    ></div>
+
+    <script>
+      let num = 1;
+      let content = document.getElementById("content");
+      function count() {
+        content.innerHTML = num++;
+      }
+      // 无优化
+      // content.onmousemove = count;
+      content.onmousemove = debounce(count, 1000);
+      // 非立即执行版
+      // function debounce(func, wait) {
+      //   let timer;
+      //   return function () {
+      //     let context = this; // 注意 this 指向
+      //     let args = arguments; // arguments中存着e
+      //     if (timer) clearTimeout(timer);
+      //     timer = setTimeout(() => {
+      //       func.apply(this, args);
+      //       timer = null
+      //     }, wait);
+      //   };
+      // }
+
+      // 立即执行版
+      // function debounce(func, wait) {
+      //   let timer;
+      //   return function () {
+      //     let context = this; // 这边的 this 指向谁?
+      //     console.dir(this)
+      //     let args = arguments; // arguments中存着e
+      //     if (timer) clearTimeout(timer);
+      //     let callNow = !timer;
+
+      //     timer = setTimeout(() => {
+      //       timer = null;
+      //     }, wait);
+
+      //     if (callNow) func.apply(context, args);
+      //   };
+      // }
+
+      // 当前在wait期间只执行一次
+      function debounce(func, wait) {
+        let timer;
+        return function () {
+          let context = this;
+          let arg = arguments;
+          if (timer) {
+            return;
+          }
+          timer = setTimeout(() => {
+            timer = null;
+          }, wait);
+          func.apply(context, arg);
+        };
+      }
+    </script>
+    <script></script>
+  </body>
+</html>

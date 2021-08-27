@@ -1,7 +1,7 @@
 /*
  * @Description: 清空表 并 重置下标
  * @LastEditors: Bowen
- * @LastEditTime: 2021-07-22 10:18:03
+ * @LastEditTime: 2021-08-26 16:02:58
  */
 
 
@@ -9,8 +9,8 @@ const path = require("path");
 const fs = require("fs").promises;
 const os = require("os");
 const sqlite3 = require("@journeyapps/sqlcipher").verbose();
-// const dbPath = path.resolve(os.homedir(), `iConfig/iconfig_sys.config`);
-const dbPath = path.resolve(os.homedir(), `iConfig_TEST/iconfig_user.config`);
+const dbPath = path.resolve(os.homedir(), `iConfig/iconfig_user.config`);
+// const dbPath = path.resolve(os.homedir(), `iConfig_TEST/iconfig_user.config`);
 const DB = new sqlite3.Database(dbPath);
 
 /**
@@ -65,5 +65,5 @@ function hendleClearTable(tables) {
     clearTable(table);
   }
 }
-
-hendleClearTable(["t_config_info","t_config_component","t_schema_product_list","t_schema_info"]);
+// "t_config_info","t_config_component","t_schema_product_list","t_schema_info"
+hendleClearTable(["t_config_info","t_config_component","t_schema_product_list"]);
