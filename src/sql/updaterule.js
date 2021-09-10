@@ -3,7 +3,7 @@
  * @Autor: Bowen
  * @Date: 2021-09-10 15:35:04
  * @LastEditors: Bowen
- * @LastEditTime: 2021-09-10 16:07:03
+ * @LastEditTime: 2021-09-10 16:37:56
  */
 
 const path = require("path");
@@ -13,6 +13,7 @@ const sqlite3 = require("@journeyapps/sqlcipher").verbose();
 // const dbPath = path.resolve(os.homedir(), `iConfig/iconfig_user.config`);
 const dbPath = path.resolve(os.homedir(), `iConfig_TEST/iconfig_sys.config`);
 const DB = new sqlite3.Database(dbPath);
+const sqliteEscape = require("../utils/sql/sqliteEscape");
 const { handleExecSql } = require("./index");
 /**
  * @description: 更新规则
@@ -28,10 +29,10 @@ async function updateRule(basePath) {
     console.log("Bowen: updateRule -> flieName", flieName);
     console.log("Bowen: updateRule -> filePath", filePath);
     //   console.log("Bowen: updateRule -> fileStr", fileStr)
-    let updateRow = ` UPDATE t_product SET baseRule ='${fileStr}'  WHERE modelType = "${flieName}"   `;
+    let updateRow = ` UPDATE t_product SET baseRule ='${sqliteEscape(fileStr)}'  WHERE modelType = "${flieName}" `;
     let res = await handleExecSql(updateRow, DB);
     if (res) {
-      console.log(flieName,"  UPDATE SUCCESS");
+      console.log(flieName, "  UPDATE SUCCESS");
     }
   }
 }
