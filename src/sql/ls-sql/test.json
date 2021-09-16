@@ -1,0 +1,54 @@
+{
+    "CPUActivationDynamicStep": 1,
+    "CPUSlotList": [
+        [
+            "1",
+            "2"
+        ]
+    ],
+    "CPUSlotMax": 2,
+    "ComputeNodeMax": 1,
+    "EnclosureRatio": [
+        "1:2",
+        "2:4"
+    ],
+    "FOModuleRatio": [
+        "1:1",
+        "2:3"
+    ],
+    "IODrawerRatio": [
+        "1:1",
+        "2:2"
+    ],
+    "InternalIOSpecification": "FHHL",
+    "MemoryActivationDynamicStep": 0,
+    "MemoryActivationMinRatio": 0,
+    "MemoryActivationMinStaticRatio": 0,
+    "MemoryCPURatio": 16,
+    "MemoryStep": 2,
+    "PCISlotMax": 11,
+    "SupportBootDevice": [],
+    "SupportCPUActivation": 0,
+    "SupportCPUDynamicActivation": 0,
+    "SupportCardSubTypeList": [
+        "NETWORK",
+        "IB&HCA",
+        "RAID&SAS",
+        "HBA",
+        "SYS",
+        "PCI_SSD",
+        "OTHERS"
+    ],
+    "SupportEnclosure": 1,
+    "SupportIODrawer": 1,
+    "SupportInternalPower": 0,
+    "SupportMemoryActivation": 0,
+    "SupportMemoryDynamicActivation": 0,
+    "SupportMemoryExpansion": 1,
+    "SupportMemoryExtendBoard": 0,
+    "SupportMemoryMirror": 0,
+    "SupportMemoryMix": 1,
+    "SupportMotherBoard": 1,
+    "SupportNoBackplaneDisk": 0,
+    "SupportSplitPlane": 1
+}

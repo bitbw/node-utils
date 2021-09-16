@@ -20,6 +20,4 @@ function sqliteEscape(keyWord) {
   return keyWord;
 }
 
-module.exports ={
-  sqliteEscape
-}
+module.exports = sqliteEscape

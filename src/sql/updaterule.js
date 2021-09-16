@@ -3,7 +3,7 @@
  * @Autor: Bowen
  * @Date: 2021-09-10 15:35:04
  * @LastEditors: Bowen
- * @LastEditTime: 2021-09-10 16:37:56
+ * @LastEditTime: 2021-09-15 16:21:35
  */
 
 const path = require("path");
@@ -14,9 +14,9 @@ const sqlite3 = require("@journeyapps/sqlcipher").verbose();
 const dbPath = path.resolve(os.homedir(), `iConfig_TEST/iconfig_sys.config`);
 const DB = new sqlite3.Database(dbPath);
 const sqliteEscape = require("../utils/sql/sqliteEscape");
-const { handleExecSql } = require("./index");
+const { handleExecSql, handleGetAll } = require("./index");
 /**
- * @description: 更新规则
+ * @description: 根据文件更新sysDB baseRule 字段 
  * @param {*} basePath .rule 文件路径
  * @return {*}
  */
@@ -32,9 +32,33 @@ async function updateRule(basePath) {
     let updateRow = ` UPDATE t_product SET baseRule ='${sqliteEscape(fileStr)}'  WHERE modelType = "${flieName}" `;
     let res = await handleExecSql(updateRow, DB);
     if (res) {
-      console.log(flieName, "  UPDATE SUCCESS");
+      console.log(flieName, "  UPDATE DB SUCCESS");
+    }
+  }
+}
+/**
+ * @description: 根据 sysDB baseRule 更新 文件
+ * @param {*} basePath .rule 文件路径
+ * @return {*}
+ */
+async function updateFile(basePath) {
+  let files = await fs.readdir(basePath);
+  for (const file of files) {
+    let flieName = path.basename(file, ".rule");
+    let filePath = path.join(basePath, file);
+    let fileStr = ""
+    console.log("Bowen: updateRule -> flieName", flieName);
+    console.log("Bowen: updateRule -> filePath", filePath);
+    //   console.log("Bowen: updateRule -> fileStr", fileStr)
+    let updateRow = `SELECT * FROM  t_product  WHERE modelType="${flieName}" `;
+    let res = await handleGetAll(updateRow, DB);
+    if (res && res.length) {
+      fileStr = res[0].baseRule
+      await fs.writeFile(filePath,fileStr);
+      console.log(flieName, "  UPDATE FILE SUCCESS");
     }
   }
 }
 
 updateRule("C:/ls-project03/app/file/rule_backup");
+// updateFile("C:/ls-project03/app/file/rule_backup");

@@ -1,4 +1,9 @@
-// 执行对应sql
+/**
+ * @description:  执行SQL语句
+ * @param {strign} sql SQL语句
+ * @param {*} DB 数据库对象
+ * @return { promise }  resolve boolean
+ */
 function handleExecSql(sql, DB) {
   return new Promise((resolve, reject) => {
     DB.serialize(() => {
@@ -11,7 +16,12 @@ function handleExecSql(sql, DB) {
     });
   });
 }
-// 查找全部数据
+/**
+ * @description:  查找全部数据
+ * @param {strign} sql SQL语句
+ * @param {*} DB 数据库对象
+ * @return { promise }  resolve res数组
+ */
 function handleGetAll(sql, DB) {
   return new Promise((resolve, reject) => {
     DB.serialize(() => {
