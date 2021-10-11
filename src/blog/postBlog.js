@@ -3,7 +3,7 @@
  * @Autor: Bowen
  * @Date: 2021-10-09 16:56:43
  * @LastEditors: Bowen
- * @LastEditTime: 2021-10-11 15:05:03
+ * @LastEditTime: 2021-10-11 17:39:33
  */
 
 const fs = require("fs").promises;
@@ -32,7 +32,8 @@ function genArticleDate(articleOrigin) {
   const datas = articleOrigin.split("---");
   const temp = datas[1].replace(/\t/g, "");
   const titleObj = YAML.parse(temp);
-  const contentData = datas[2];
+  // datas.length > 3 为边际情况特殊处理一下
+  const contentData = datas.length > 3 ? datas.slice(2).join("---") : datas[2];
   return {
     titleObj,
     contentData,

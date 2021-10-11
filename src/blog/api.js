@@ -3,7 +3,7 @@
  * @Autor: Bowen
  * @Date: 2021-10-09 16:07:25
  * @LastEditors: Bowen
- * @LastEditTime: 2021-10-11 15:09:36
+ * @LastEditTime: 2021-10-11 17:45:12
  */
 // 解析 xml
 const parser = require("xml2json");
@@ -35,6 +35,17 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+// 添加请求拦截器
+axios.interceptors.request.use(
+  (config) => {
+    config
+    return config
+  },
+  (error) => {
+    // 对请求错误做些什么
+    return Promise.reject(error);
+  }
+);
 // 发布或修改文章
 function pushPost({ type = "add", content, title, postid }) {
   return axios.post(
@@ -53,13 +64,13 @@ function pushPost({ type = "add", content, title, postid }) {
                         <member>
                             <name>description</name>
                             <value>
-                                <string><![CDATA[${content}]]></string>
+                                <string>${XMLEscape(content)}</string>
                             </value>
                         </member>
                         <member>
                             <name>title</name>
                             <value>
-                                <string><![CDATA[${title}]]></string>
+                                <string>${XMLEscape(title)}</string>
                             </value>
                         </member>
                         <member>
@@ -101,12 +112,22 @@ function getPost({ postid }) {
   );
 }
 
+function XMLEscape(content){
+  let newContent =content
+  newContent = newContent.replace(/&/g, "&amp;");
+  newContent = newContent.replace(/</g, "&lt;");
+  newContent = newContent.replace(/>/g, "&gt;");
+  newContent = newContent.replace(/"/g, "&quot;");
+  newContent = newContent.replace(/'/g, "&apos;");
+  return newContent
+}
 
 
 module.exports = {
   pushPost,
   getPost,
 };
+
 
 
 // var xml = "<foo attr=\"value\">bar</foo>";
