@@ -3,7 +3,7 @@
  * @Autor: Bowen
  * @Date: 2021-10-09 16:07:25
  * @LastEditors: Bowen
- * @LastEditTime: 2021-10-11 17:45:12
+ * @LastEditTime: 2021-10-11 17:47:07
  */
 // 解析 xml
 const parser = require("xml2json");
@@ -111,7 +111,7 @@ function getPost({ postid }) {
 </methodCall>`
   );
 }
-
+// 转义引起XML报错的特殊字符
 function XMLEscape(content){
   let newContent =content
   newContent = newContent.replace(/&/g, "&amp;");
