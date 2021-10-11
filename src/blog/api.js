@@ -1,5 +1,13 @@
-var parser = require("xml2json");
-var axios = require("axios");
+/*
+ * @Description: 博客园 api 封装 ，common 中填写 用户名和密码
+ * @Autor: Bowen
+ * @Date: 2021-10-09 16:07:25
+ * @LastEditors: Bowen
+ * @LastEditTime: 2021-10-11 15:09:36
+ */
+// 解析 xml
+const parser = require("xml2json");
+const axios = require("axios");
 
 const _axios = axios.create();
 
@@ -93,9 +101,16 @@ function getPost({ postid }) {
   );
 }
 
+
+
+module.exports = {
+  pushPost,
+  getPost,
+};
+
+
 // var xml = "<foo attr=\"value\">bar</foo>";
 // console.log("input -> %s", xml)
-
 // // xml to json
 // var json = parser.toJson(xml);
 // console.log("to json -> %s", json);
@@ -109,7 +124,3 @@ function getPost({ postid }) {
 //   console.log("Bowen: res", res)
 
 //   })
-module.exports = {
-  pushPost,
-  getPost,
-};

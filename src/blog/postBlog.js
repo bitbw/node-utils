@@ -1,3 +1,11 @@
+/*
+ * @Description: 批量将hexo中的md文件上传博客园
+ * @Autor: Bowen
+ * @Date: 2021-10-09 16:56:43
+ * @LastEditors: Bowen
+ * @LastEditTime: 2021-10-11 15:05:03
+ */
+
 const fs = require("fs").promises;
 const path = require("path");
 const YAML = require("yaml");
