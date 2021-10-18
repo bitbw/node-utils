@@ -1,7 +1,7 @@
 /*
  * @Description: Express Server
  * @LastEditors: Bowen
- * @LastEditTime: 2021-07-19 15:40:12
+ * @LastEditTime: 2021-10-15 11:17:36
  */
 
 const express = require("express");
@@ -44,6 +44,30 @@ app.all("*", function (req, res, next) {
   res.header("X-Powered-By", " 3.2.1");
   res.header("Content-Type", "application/json;charset=utf-8");
   next();
+});
+app.post("/test/formdata", (req, res) => {
+  res.send({
+    code: "200",
+    paramsVaildtor: null,
+    obj: {
+      versionType: 0,
+      versionDesc: "3月例行数据包更新-with ver1.5.1",
+      releaseDate: "2021-04-01 15:41:31",
+      downloadUrl: "http://218.57.146.118:8080/sys-iconfig/prod/iconfig_sys.config",
+      isSend: 1,
+      id: 101,
+      versionHash: "null",
+      isPublish: 1,
+      disables: 1,
+      versionCode: "1.1.39-20210401-0A",
+      versionIdent: 2,
+      createDate: "2021-04-01 15:41:24"
+    },
+    message: "数据查询成功",
+    isNULLSearch: null,
+    token: null,
+    isShow: null
+  });
 });
 app.get("/out/api/getNewVersion", (req, res) => {
   res.send({
