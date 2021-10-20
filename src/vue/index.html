@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            车名:<span v-text="cart.name"></span><br/>
+            颜色:<span v-text="cart.color"></span><br/>
+            颜色-插值表达式:<span>{{cart.color}}</span>
+            <p>tag的内容是{{tag}}</p>
+            <p v-html="tag"></p>
+        </div>
+        <p v-text="cart.name"></p>
+        <p v-html="cart.name"></p>
+        <p>{{cart.name}}</p>
+        <input type="text" v-model="cart.name">
+        <input type="text" v-model="cart.color">
+        <input type="text" v-model="cart.text">
+        <button v-on:click="onclick">点击我换奔驰</button>
+        <button v-on:click="onclickchange">点击我加属性</button>
+    </div>
+    <script src="./watcher.js"></script>
+    <script src="./observe.js"></script>
+    <script src="./compile.js"></script>
+    <script src="./vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:'#app',
+            data:{
+            msg: 'hello world',
+            tag: `<h1>haha</h1>`,
+            cart:{
+                name:'丰田',
+                color:'white'
+            }
+            },
+            methods:{
+                onclick() {
+                    this.cart.name = '奔驰'
+                },
+                onclickchange() {
+                    this.cart.text = '666'
+                }
+            }
+        })
+        console.log(vm);
+        window.vm = vm
+        
+
+
+    </script>
+</body>
+</html>
