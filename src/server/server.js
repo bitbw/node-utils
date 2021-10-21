@@ -1,10 +1,12 @@
 /*
  * @Description: Express Server
  * @LastEditors: Bowen
- * @LastEditTime: 2021-10-15 11:17:36
+ * @LastEditTime: 2021-10-20 17:13:42
  */
 
 const express = require("express");
+var bodyParser = require("body-parser");
+var multiparty = require("multiparty");
 const fs = require("fs");
 const path = require("path");
 const app = express();
@@ -27,6 +29,10 @@ const Cat = mongoose.model("Cat", { name: String });
 //   .catch(err => {
 //     console.log("err", err);
 //   });
+// 挂载中间件
+// app.use(formidable())
+
+// app.use(bodyParser.json())
 
 // 防止跨域
 app.all("*", function (req, res, next) {
@@ -35,16 +41,36 @@ app.all("*", function (req, res, next) {
   //设置指定域名:
   //res.header("Access-Control-Allow-Origin", "http://baidu.com");
   //这样,baidu.com下面的网页,就可以ajax请求你的服务器了
-
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
-
   res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
   //第二个参数,为对方可以以哪种HTTP请求方式请求你的服务器,根据自己的情况酌情设置
-
   res.header("X-Powered-By", " 3.2.1");
   res.header("Content-Type", "application/json;charset=utf-8");
   next();
 });
+app.post("/crashReporter", (req, res) => {
+  console.log("Bowen: req", req);
+  var form = new multiparty.Form();
+  form.parse(req, function (err, fields, files) {
+    console.log("Bowen: files", files);
+    console.log("Bowen: fields", fields);
+    // res.writeHead(200, { "content-type": "text/plain" });
+    // res.write("received upload:\n\n");
+    // res.end(util.inspect({ fields: fields, files: files }));
+  });
+  // console.log("Bowen: req.files", req.files)
+  // console.log("Bowen: req.fields", req.fields)
+  res.send({
+    code: "200",
+    paramsVaildtor: null,
+    obj: {},
+    message: "数据查询成功",
+    isNULLSearch: null,
+    token: null,
+    isShow: null,
+  });
+});
+
 app.post("/test/formdata", (req, res) => {
   res.send({
     code: "200",
@@ -61,12 +87,12 @@ app.post("/test/formdata", (req, res) => {
       disables: 1,
       versionCode: "1.1.39-20210401-0A",
       versionIdent: 2,
-      createDate: "2021-04-01 15:41:24"
+      createDate: "2021-04-01 15:41:24",
     },
     message: "数据查询成功",
     isNULLSearch: null,
     token: null,
-    isShow: null
+    isShow: null,
   });
 });
 app.get("/out/api/getNewVersion", (req, res) => {
@@ -85,12 +111,12 @@ app.get("/out/api/getNewVersion", (req, res) => {
       disables: 1,
       versionCode: "1.1.39-20210401-0A",
       versionIdent: 2,
-      createDate: "2021-04-01 15:41:24"
+      createDate: "2021-04-01 15:41:24",
     },
     message: "数据查询成功",
     isNULLSearch: null,
     token: null,
-    isShow: null
+    isShow: null,
   });
 });
 app.get("/cat", (req, res) => {
@@ -100,8 +126,8 @@ app.get("/cat", (req, res) => {
     // Cat.findOneAndUpdate({ name: kittens[0].name}, { name: 'jason bourne' }, (err,res)=>{
     // console.log("findOneAndUpdate: err,res", err,res)
     // })
-    kittens[0].name = "hello kity"
-    kittens[0].save()
+    kittens[0].name = "hello kity";
+    kittens[0].save();
     for (let cat of kittens) {
       console.log("name", cat.name);
     }
@@ -117,7 +143,7 @@ app.get("/cat", (req, res) => {
 // // 通过 public 下其他文件夹也可以获取内容
 // app.use(express.static(path.join(__dirname, "../../public/")));
 
-app.listen(8848, e => {
+app.listen(8848, (e) => {
   if (!e) {
     console.log(`启动成功:http://localhost:8848`);
   }
