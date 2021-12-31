@@ -1,7 +1,7 @@
 /*
  * @Description: Express Server
  * @LastEditors: Bowen
- * @LastEditTime: 2021-10-20 17:13:42
+ * @LastEditTime: 2021-10-28 14:00:09
  */
 
 const express = require("express");
@@ -11,6 +11,7 @@ const fs = require("fs");
 const path = require("path");
 const app = express();
 const mongoose = require("mongoose");
+
 mongoose.connect("mongodb://localhost:27017/test", { useNewUrlParser: true, useUnifiedTopology: true });
 // 集合
 const Cat = mongoose.model("Cat", { name: String });
@@ -48,6 +49,7 @@ app.all("*", function (req, res, next) {
   res.header("Content-Type", "application/json;charset=utf-8");
   next();
 });
+
 app.post("/crashReporter", (req, res) => {
   console.log("Bowen: req", req);
   var form = new multiparty.Form();
@@ -95,6 +97,7 @@ app.post("/test/formdata", (req, res) => {
     isShow: null,
   });
 });
+
 app.get("/out/api/getNewVersion", (req, res) => {
   res.send({
     code: "200",
@@ -119,6 +122,7 @@ app.get("/out/api/getNewVersion", (req, res) => {
     isShow: null,
   });
 });
+
 app.get("/cat", (req, res) => {
   Cat.find(function (err, kittens) {
     if (err) return console.error(err);
@@ -148,3 +152,15 @@ app.listen(8848, (e) => {
     console.log(`启动成功:http://localhost:8848`);
   }
 });
+
+function promisify(fn) {
+  return function (...arg) {
+    return new Promise((resovle, reject) => {
+      function cb(e, res) {
+        if (e) reject(e);
+        else resovle(res);
+      }
+      fn(...arg, cb);
+    });
+  };
+}

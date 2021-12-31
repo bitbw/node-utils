@@ -3,7 +3,7 @@
  * @Autor: Bowen
  * @Date: 2021-04-22 14:47:09
  * @LastEditors: Bowen
- * @LastEditTime: 2021-04-22 14:57:30
+ * @LastEditTime: 2021-12-02 17:54:15
  */
 
 const oneMinutes = 1000 * 60;
@@ -12,7 +12,7 @@ const oneDay = oneHours * 24;
 const oneMonth = oneDay * 30;
 const oneYear = oneDay * 365;
 
-function DateFormat(format) {
+function DateFormat(format = "YYYY-MM-DD hh:mm:ss") {
   format = format
     .replace("YYYY", "${y}")
     .replace("YY", "${y.slice(2)}")
