@@ -3,7 +3,7 @@
  * @Autor: Bowen
  * @Date: 2021-10-09 16:56:43
  * @LastEditors: Bowen
- * @LastEditTime: 2021-10-11 17:39:33
+ * @LastEditTime: 2022-01-05 13:51:45
  */
 
 const fs = require("fs").promises;
@@ -16,7 +16,7 @@ const { pushPost, getPost } = require("./api");
 const dirPath = "C:/E盘资料/my-blog/my-blog/source/_posts";
 
 // 发布所有的文章
-async function hanleAllPushPost() {
+async function hanleAllPushPost(dirPath) {
   let files = await fs.readdir(dirPath);
   for (const fileName of files) {
     if (!/\.md/.test(fileName)) continue;
@@ -31,7 +31,13 @@ async function hanleAllPushPost() {
 function genArticleDate(articleOrigin) {
   const datas = articleOrigin.split("---");
   const temp = datas[1].replace(/\t/g, "");
-  const titleObj = YAML.parse(temp);
+  let titleObj;
+  try {
+    titleObj = YAML.parse(temp);
+  } catch (error) {
+    console.log("[YAML解析错误]", error);
+    throw Error(error);
+  }
   // datas.length > 3 为边际情况特殊处理一下
   const contentData = datas.length > 3 ? datas.slice(2).join("---") : datas[2];
   return {
@@ -66,6 +72,7 @@ async function handlePushPost(filePath) {
   // 编辑
   if (cnblogs && cnblogs.postid) {
     console.log("[-------------修改-------------]");
+
     res = await pushPost({
       type: "edit",
       content: contentData,
@@ -73,7 +80,10 @@ async function handlePushPost(filePath) {
       postid: cnblogs.postid,
     });
     if (res.methodResponse.fault) {
-      console.log("[修改失败]", res.methodResponse.fault.value.struct.member[1].value.string);
+      console.log(
+        "[修改失败]",
+        res.methodResponse.fault.value.struct.member[1].value.string
+      );
       throw Error(res.methodResponse.fault.value.struct.member[1].value.string);
     }
     console.log("[修改成功]", res.methodResponse.params.param.value.boolean);
@@ -87,7 +97,10 @@ async function handlePushPost(filePath) {
     });
     res;
     if (res.methodResponse.fault) {
-      console.log("[上传失败]", res.methodResponse.fault.value.struct.member[1].value.string);
+      console.log(
+        "[上传失败]",
+        res.methodResponse.fault.value.struct.member[1].value.string
+      );
       throw Error(res.methodResponse.fault.value.struct.member[1].value.string);
     }
     console.log("[上传成功]", res.methodResponse.params.param.value.string);
@@ -98,8 +111,10 @@ async function handlePushPost(filePath) {
   const str = genArticleStr({ titleObj, contentData });
   await fs.writeFile(filePath, str);
   console.log("[回写成功]", fileName);
+  // 等待 1分钟 后继续下一个
+  await new Promise((r) => setTimeout(r, 35000, true));
 }
 
 // test
 // handlePushPost("C:/E盘资料/my-blog/my-blog/source/_posts/js中的微观任务和宏观任务.md");
-hanleAllPushPost();
+hanleAllPushPost(dirPath);
