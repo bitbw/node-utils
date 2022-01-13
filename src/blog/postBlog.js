@@ -3,7 +3,7 @@
  * @Autor: Bowen
  * @Date: 2021-10-09 16:56:43
  * @LastEditors: Bowen
- * @LastEditTime: 2022-01-05 13:51:45
+ * @LastEditTime: 2022-01-12 13:39:08
  */
 
 const fs = require("fs").promises;
@@ -72,7 +72,6 @@ async function handlePushPost(filePath) {
   // 编辑
   if (cnblogs && cnblogs.postid) {
     console.log("[-------------修改-------------]");
-
     res = await pushPost({
       type: "edit",
       content: contentData,
