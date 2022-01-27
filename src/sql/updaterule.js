@@ -3,13 +3,14 @@
  * @Autor: Bowen
  * @Date: 2021-09-10 15:35:04
  * @LastEditors: Bowen
- * @LastEditTime: 2021-09-26 10:55:55
+ * @LastEditTime: 2022-01-20 10:17:26
  */
 
 const path = require("path");
 const fs = require("fs").promises;
 const os = require("os");
 const sqlite3 = require("@journeyapps/sqlcipher").verbose();
+const targetPath = "C:/ls-project03/app/file/rule_backup"
 // const dbPath = path.resolve(os.homedir(), `iConfig/iconfig_user.config`);
 const dbPath = path.resolve(os.homedir(), `iConfig_TEST/iconfig_sys.config`);
 const DB = new sqlite3.Database(dbPath);
@@ -60,5 +61,6 @@ async function updateFile(basePath) {
   }
 }
 
-updateRule("C:/ls-project03/app/file/rule_backup");
-// updateFile("C:/ls-project03/app/file/rule_backup");
+
+updateRule(targetPath);
+// updateFile(targetPath);
