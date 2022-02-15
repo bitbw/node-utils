@@ -1,0 +1,324 @@
+[
+    {
+        "id": 23840546133503180,
+        "entity": "organ",
+        "title": "组织架构-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 95676420262620420,
+        "entity": "organ",
+        "title": "组织架构-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 82757247163297740,
+        "entity": "organ",
+        "title": "组织架构-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 136965356313485980,
+        "entity": "organ",
+        "title": "组织架构-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 142353093821231230,
+        "entity": "organ",
+        "title": "组织架构-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 57608885489706220,
+        "entity": "organ",
+        "title": "组织架构-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 97069358193610530,
+        "entity": "director",
+        "title": "负责人管理-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 83950825698448160,
+        "entity": "director",
+        "title": "负责人管理-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 112330345344352100,
+        "entity": "director",
+        "title": "负责人管理-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 2379027988617122.5,
+        "entity": "director",
+        "title": "负责人管理-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 64137557129183470,
+        "entity": "article",
+        "title": "文章管理-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 104157866793521440,
+        "entity": "article",
+        "title": "文章管理-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 40496871153639270,
+        "entity": "article",
+        "title": "文章管理-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 112003972810519790,
+        "entity": "article",
+        "title": "文章管理-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 76015028082898380,
+        "entity": "weChatArticle",
+        "title": "公众号维护-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 57733933367134024,
+        "entity": "weChatArticle",
+        "title": "公众号维护-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 86555896321504300,
+        "entity": "weChatArticle",
+        "title": "公众号维护-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 5414193984778137,
+        "entity": "weChatArticle",
+        "title": "公众号维护-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 151007681941151140,
+        "entity": "weChatVideo",
+        "title": "视频号维护-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 6231812719789748,
+        "entity": "weChatVideo",
+        "title": "视频号维护-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 79002891342283090,
+        "entity": "weChatVideo",
+        "title": "视频号维护-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 104452585374594900,
+        "entity": "weChatVideo",
+        "title": "视频号维护-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 21821866913155024,
+        "entity": "course",
+        "title": "赋能课程-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 5488305544865358,
+        "entity": "course",
+        "title": "赋能课程-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 80961747929792700,
+        "entity": "course",
+        "title": "赋能课程-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 12220809268382028,
+        "entity": "course",
+        "title": "赋能课程-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 22225703102679176,
+        "entity": "category",
+        "title": "赋能课程一级分类维护-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 36752685062502250,
+        "entity": "category",
+        "title": "赋能课程一级分类维护-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 44396424412316360,
+        "entity": "category",
+        "title": "赋能课程一级分类维护-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 78528174805907140,
+        "entity": "category",
+        "title": "赋能课程一级分类维护-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 132380584454591220,
+        "entity": "markingRole",
+        "title": "后台角色权限-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 6270987295106627,
+        "entity": "markingRole",
+        "title": "后台角色权限-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 98669642730537810,
+        "entity": "markingRole",
+        "title": "后台角色权限-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 137899282051018000,
+        "entity": "markingRole",
+        "title": "后台角色权限-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 132380584454591220,
+        "entity": "miniRole",
+        "title": "小程序角色权限-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 6270987295106627,
+        "entity": "miniRole",
+        "title": "小程序角色权限-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 98669642730537810,
+        "entity": "miniRole",
+        "title": "小程序角色权限-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 137899282051018000,
+        "entity": "miniRole",
+        "title": "小程序角色权限-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 124738530203021310,
+        "entity": "userAuth",
+        "title": "用户管理-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 69129480517524140,
+        "entity": "userAuth",
+        "title": "用户管理-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 143512197007883950,
+        "entity": "userAuth",
+        "title": "用户管理-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 123409052566202830,
+        "entity": "userAuth",
+        "title": "用户管理-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 134654380475589600,
+        "entity": "alluser",
+        "title": "全局用户-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 30716737484748772,
+        "entity": "alluser",
+        "title": "全局用户-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 141895291434937100,
+        "entity": "alluser",
+        "title": "全局用户-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 100922888670382770,
+        "entity": "alluser",
+        "title": "全局用户-查询",
+        "action": "view",
+        "subtype": "2"
+    }
+]

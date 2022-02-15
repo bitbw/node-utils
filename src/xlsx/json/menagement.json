@@ -1,0 +1,1157 @@
+[
+    {
+        "id": 134654380475589600,
+        "entity": "user",
+        "title": "全局用户-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 30716737484748772,
+        "entity": "user",
+        "title": "全局用户-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 141895291434937100,
+        "entity": "user",
+        "title": "全局用户-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 100922888670382770,
+        "entity": "user",
+        "title": "全局用户-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 150749177578528770,
+        "entity": "userManage",
+        "title": "用户管理-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 100549269237466700,
+        "entity": "userManage",
+        "title": "用户管理-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 35837558039684636,
+        "entity": "userManage",
+        "title": "用户管理-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 3120104308285132,
+        "entity": "userManage",
+        "title": "用户管理-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 124691491912749780,
+        "entity": "userManage",
+        "title": "用户管理-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 143201737259363090,
+        "entity": "userManage",
+        "title": "用户管理-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 46852724653896410,
+        "entity": "manageRole",
+        "title": "后台角色权限-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 98984324107634640,
+        "entity": "manageRole",
+        "title": "后台角色权限-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 4019811342522220.5,
+        "entity": "manageRole",
+        "title": "后台角色权限-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 78486891091868060,
+        "entity": "manageRole",
+        "title": "后台角色权限-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 14031208215108912,
+        "entity": "appRole",
+        "title": "客户端角色权限-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 110455777270598270,
+        "entity": "appRole",
+        "title": "客户端角色权限-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 148513257818914270,
+        "entity": "appRole",
+        "title": "客户端角色权限-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 163620509367047840,
+        "entity": "appRole",
+        "title": "客户端角色权限-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 151228665019465400,
+        "entity": "permission",
+        "title": "权限菜单管理-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 91189245321701620,
+        "entity": "permission",
+        "title": "权限菜单管理-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 94183479253079840,
+        "entity": "permission",
+        "title": "权限菜单管理-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 143660878180566290,
+        "entity": "dict",
+        "title": "数据字典管理-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 119748815725066610,
+        "entity": "dict",
+        "title": "数据字典管理-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 121184951733335140,
+        "entity": "dict",
+        "title": "数据字典管理-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 21045985598775104,
+        "entity": "dict",
+        "title": "数据字典管理-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 139697705391826180,
+        "entity": "listprice",
+        "title": "价格维护信息-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 13400027873338566,
+        "entity": "listprice",
+        "title": "价格维护信息-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 12408573663851832,
+        "entity": "listprice",
+        "title": "价格维护信息-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 145992535957541440,
+        "entity": "listprice",
+        "title": "价格维护信息-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 124082040056062160,
+        "entity": "listprice",
+        "title": "价格维护信息-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 89683320920389040,
+        "entity": "listprice",
+        "title": "价格维护信息-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 50451299925547130,
+        "entity": "cpu",
+        "title": "处理器-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 28871966818171440,
+        "entity": "cpu",
+        "title": "处理器-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 91156936741802460,
+        "entity": "cpu",
+        "title": "处理器-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 116122019759222060,
+        "entity": "cpu",
+        "title": "处理器-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 8280192474158940,
+        "entity": "cpu",
+        "title": "处理器-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 83457386088537820,
+        "entity": "cpu",
+        "title": "处理器-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 163813250742667900,
+        "entity": "memory",
+        "title": "内存-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 59136938956315200,
+        "entity": "memory",
+        "title": "内存-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 163480784110678620,
+        "entity": "memory",
+        "title": "内存-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 119824997879316720,
+        "entity": "memory",
+        "title": "内存-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 13296619394584394,
+        "entity": "memory",
+        "title": "内存-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 84678671330438020,
+        "entity": "memory",
+        "title": "内存-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 4990493671305032,
+        "entity": "disk",
+        "title": "硬盘-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 116809229161277060,
+        "entity": "disk",
+        "title": "硬盘-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 132535867990479400,
+        "entity": "disk",
+        "title": "硬盘-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 3230046327358162,
+        "entity": "disk",
+        "title": "硬盘-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 129605306004805020,
+        "entity": "disk",
+        "title": "硬盘-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 152455947397558560,
+        "entity": "disk",
+        "title": "硬盘-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 10746452071783208,
+        "entity": "motherboard",
+        "title": "主板-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 22721003606335164,
+        "entity": "motherboard",
+        "title": "主板-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 10104935747285946,
+        "entity": "motherboard",
+        "title": "主板-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 86820201716409490,
+        "entity": "motherboard",
+        "title": "主板-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 53897420878637304,
+        "entity": "motherboard",
+        "title": "主板-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 68176955258246140,
+        "entity": "motherboard",
+        "title": "主板-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 125770321912705420,
+        "entity": "card",
+        "title": "板卡-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 91012856309439920,
+        "entity": "card",
+        "title": "板卡-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 50643601811596330,
+        "entity": "card",
+        "title": "板卡-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 149304953978516220,
+        "entity": "card",
+        "title": "板卡-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 92018624171831280,
+        "entity": "card",
+        "title": "板卡-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 136150572899917580,
+        "entity": "card",
+        "title": "板卡-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 78127613280498380,
+        "entity": "power",
+        "title": "电源和电源线-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 13729057656624278,
+        "entity": "power",
+        "title": "电源和电源线-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 69636609390884210,
+        "entity": "power",
+        "title": "电源和电源线-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 25487481695443824,
+        "entity": "power",
+        "title": "电源和电源线-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 10395871861652722,
+        "entity": "power",
+        "title": "电源和电源线-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 125883875218711410,
+        "entity": "power",
+        "title": "电源和电源线-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 125653357937382420,
+        "entity": "other",
+        "title": "其他部件-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 33466183683374500,
+        "entity": "other",
+        "title": "其他部件-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 113081486342363700,
+        "entity": "other",
+        "title": "其他部件-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 161047859503850620,
+        "entity": "other",
+        "title": "其他部件-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 25591860125573092,
+        "entity": "other",
+        "title": "其他部件-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 159424551940787400,
+        "entity": "other",
+        "title": "其他部件-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 117819253748798020,
+        "entity": "iodrawer",
+        "title": "io扩展柜-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 149529855266568450,
+        "entity": "iodrawer",
+        "title": "io扩展柜-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 106508558011514960,
+        "entity": "iodrawer",
+        "title": "io扩展柜-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 8504830115712926,
+        "entity": "iodrawer",
+        "title": "io扩展柜-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 111320896801483040,
+        "entity": "iodrawer",
+        "title": "io扩展柜-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 129774889558017170,
+        "entity": "iodrawer",
+        "title": "io扩展柜-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 29878761266516316,
+        "entity": "enclosure",
+        "title": "硬盘扩展柜-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 5675862852200679,
+        "entity": "enclosure",
+        "title": "硬盘扩展柜-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 80624290135066660,
+        "entity": "enclosure",
+        "title": "硬盘扩展柜-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 89637874514084500,
+        "entity": "enclosure",
+        "title": "硬盘扩展柜-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 84649969785501520,
+        "entity": "enclosure",
+        "title": "硬盘扩展柜-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 159741227767473020,
+        "entity": "enclosure",
+        "title": "硬盘扩展柜-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 74966205294644260,
+        "entity": "fomodule",
+        "title": "io扩展柜模组-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 83419067407992500,
+        "entity": "fomodule",
+        "title": "io扩展柜模组-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 16294501397841782,
+        "entity": "fomodule",
+        "title": "io扩展柜模组-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 54305103377305260,
+        "entity": "fomodule",
+        "title": "io扩展柜模组-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 8809744800868254,
+        "entity": "fomodule",
+        "title": "io扩展柜模组-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 28846917662635340,
+        "entity": "fomodule",
+        "title": "io扩展柜模组-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 87143744222795950,
+        "entity": "enclosuremode",
+        "title": "硬盘扩展柜模组-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 106852181641071680,
+        "entity": "enclosuremode",
+        "title": "硬盘扩展柜模组-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 87658981616511650,
+        "entity": "enclosuremode",
+        "title": "硬盘扩展柜模组-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 105476977000506670,
+        "entity": "enclosuremode",
+        "title": "硬盘扩展柜模组-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 155544816103038300,
+        "entity": "enclosuremode",
+        "title": "硬盘扩展柜模组-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 43983305848749064,
+        "entity": "enclosuremode",
+        "title": "硬盘扩展柜模组-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 81310582056715680,
+        "entity": "software",
+        "title": "软件产品-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 97369465204140510,
+        "entity": "software",
+        "title": "软件产品-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 37004068643210504,
+        "entity": "software",
+        "title": "软件产品-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 7437479644544485,
+        "entity": "software",
+        "title": "软件产品-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 138545735345729330,
+        "entity": "software",
+        "title": "软件产品-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 85608007579433740,
+        "entity": "software",
+        "title": "软件产品-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 33824614190629330,
+        "entity": "swma",
+        "title": "软件维保-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 89453204777287580,
+        "entity": "swma",
+        "title": "软件维保-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 127630958235239220,
+        "entity": "swma",
+        "title": "软件维保-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 136505526835258820,
+        "entity": "swma",
+        "title": "软件维保-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 129772270701412180,
+        "entity": "swma",
+        "title": "软件维保-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 102368158613493040,
+        "entity": "swma",
+        "title": "软件维保-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 56867937449700740,
+        "entity": "a6p",
+        "title": "软件光盘信息-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 123934383608760620,
+        "entity": "a6p",
+        "title": "软件光盘信息-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 40290202459108420,
+        "entity": "a6p",
+        "title": "软件光盘信息-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 44819667411490390,
+        "entity": "a6p",
+        "title": "软件光盘信息-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 23636149690835796,
+        "entity": "a6p",
+        "title": "软件光盘信息-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 58944854324377160,
+        "entity": "a6p",
+        "title": "软件光盘信息-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 128431153312600780,
+        "entity": "hpo",
+        "title": "软件安装指令-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 93293224167662480,
+        "entity": "hpo",
+        "title": "软件安装指令-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 122883023806103220,
+        "entity": "hpo",
+        "title": "软件安装指令-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 90126534909097760,
+        "entity": "hpo",
+        "title": "软件安装指令-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 15152007132079242,
+        "entity": "hpo",
+        "title": "软件安装指令-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 86212420402189580,
+        "entity": "hpo",
+        "title": "软件安装指令-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 128450546763785420,
+        "entity": "ibmprice",
+        "title": "IBM价格查询-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 49583883836871896,
+        "entity": "template",
+        "title": "产品模板-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 113055422510546940,
+        "entity": "template",
+        "title": "产品模板-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 89477287810576240,
+        "entity": "template",
+        "title": "产品模板-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 25656677840539100,
+        "entity": "template",
+        "title": "产品模板-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 25453111129871080,
+        "entity": "template",
+        "title": "产品模板-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 149481701366120860,
+        "entity": "template",
+        "title": "产品模板-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 156841504727538080,
+        "entity": "product",
+        "title": "产品框架-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 74492330126862140,
+        "entity": "product",
+        "title": "产品框架-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 14523459823159980,
+        "entity": "product",
+        "title": "产品框架-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 25045245499891504,
+        "entity": "product",
+        "title": "产品框架-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 63951868940388660,
+        "entity": "product",
+        "title": "产品框架-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 84410907187918770,
+        "entity": "product",
+        "title": "产品框架-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 114694670786878830,
+        "entity": "peripheral",
+        "title": "外设产品-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 141952172074438080,
+        "entity": "peripheral",
+        "title": "外设产品-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 8103443485711244,
+        "entity": "peripheral",
+        "title": "外设产品-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 140749947797886640,
+        "entity": "peripheral",
+        "title": "外设产品-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 110024636177610820,
+        "entity": "peripheral",
+        "title": "外设产品-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 14366744113146380,
+        "entity": "peripheral",
+        "title": "外设产品-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 34542352649045850,
+        "entity": "independent",
+        "title": "独立服务产品-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 46243876977841290,
+        "entity": "independent",
+        "title": "独立服务产品-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 74741724646202910,
+        "entity": "independent",
+        "title": "独立服务产品-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 92772841438079980,
+        "entity": "independent",
+        "title": "独立服务产品-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 132535293938851540,
+        "entity": "independent",
+        "title": "独立服务产品-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 132459082852644670,
+        "entity": "independent",
+        "title": "独立服务产品-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 15086277841152352,
+        "entity": "switeration",
+        "title": "软件迭代-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 100157671322762430,
+        "entity": "switeration",
+        "title": "软件迭代-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 50791485642990540,
+        "entity": "switeration",
+        "title": "软件迭代-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 92684124583698300,
+        "entity": "switeration",
+        "title": "软件迭代-导入",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 19415608620029084,
+        "entity": "switeration",
+        "title": "软件迭代-导出",
+        "action": "export",
+        "subtype": "2"
+    },
+    {
+        "id": 113273590389372460,
+        "entity": "switeration",
+        "title": "软件迭代-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 161598901220077950,
+        "entity": "part",
+        "title": "部件版本发布-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 41127049004780310,
+        "entity": "part",
+        "title": "部件版本发布-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 32585486789597484,
+        "entity": "part",
+        "title": "部件版本发布-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 66819529399154696,
+        "entity": "part",
+        "title": "部件版本发布-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 133164694548380080,
+        "entity": "priveversion",
+        "title": "价格版本发布-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 117508568424801490,
+        "entity": "priveversion",
+        "title": "价格版本发布-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 35861187465175150,
+        "entity": "priveversion",
+        "title": "价格版本发布-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 87705960482002060,
+        "entity": "priveversion",
+        "title": "价格版本发布-查询",
+        "action": "view",
+        "subtype": "2"
+    },
+    {
+        "id": 37658607716371400,
+        "entity": "mainversion",
+        "title": "客户端版本发布-添加",
+        "action": "add",
+        "subtype": "2"
+    },
+    {
+        "id": 156675498270758140,
+        "entity": "mainversion",
+        "title": "客户端版本发布-修改",
+        "action": "amend",
+        "subtype": "2"
+    },
+    {
+        "id": 7369224091280814,
+        "entity": "mainversion",
+        "title": "客户端版本发布-删除",
+        "action": "delete",
+        "subtype": "2"
+    },
+    {
+        "id": 61040557369886910,
+        "entity": "mainversion",
+        "title": "客户端版本发布-上传",
+        "action": "import",
+        "subtype": "2"
+    },
+    {
+        "id": 99271337141142770,
+        "entity": "mainversion",
+        "title": "客户端版本发布-查询",
+        "action": "view",
+        "subtype": "2"
+    }
+]
