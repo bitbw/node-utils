@@ -1,21 +1,34 @@
 /*
  * @Description: 日志
  * @LastEditors: Bowen
- * @LastEditTime: 2021-05-07 17:08:37
+ * @LastEditTime: 2022-03-06 11:31:55
  */
 
 const fs = require("fs").promises;
 const path = require("path");
 const defaultPaht = path.resolve(__dirname, "log");
+
+/**
+ * @description:
+ * @param  {*} write   是否写入文件
+ * @param  {*} path    写入文件路径
+ * @param  {*} perfix
+ * @param  {*} suffix
+ * @param  {*} console   是否 console.log
+ * @param  {*} date
+ * @return {*}
+ */
 class Logger {
-  constructor(option) {
+  constructor(option = {}) {
     const {
+      write = false,
       path = "",
       perfix = "",
       suffix = "",
-      console = false,
-      date = new Date()
+      console = true,
+      date = new Date(),
     } = option;
+    this.write = write;
     this.path = path ? path : defaultPaht;
     this.perfix = perfix;
     this.suffix = suffix;
@@ -32,15 +45,21 @@ class Logger {
     return `${date.getFullYear()}-${month}-${day} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
   }
   async warn(info) {
-    const data = `\n${this.perfix}${this.getDate()} [WARN]` + info + this.suffix;
-    await this.write(data);
+    const data =
+      `\n${this.perfix}${this.getDate()} [WARN]` + info + this.suffix;
+    if (this.write) {
+      await this.write(data);
+    }
     if (this.console) {
       console.warn(data);
     }
   }
   async info(info) {
-    const data = `\n${this.perfix}${this.getDate()} [INFO]` + info + this.suffix;
-    await this.write(data);
+    const data =
+      `\n${this.perfix}${this.getDate()} [INFO]` + info + this.suffix;
+    if (this.write) {
+      await this.write(data);
+    }
     if (this.console) {
       console.log(data);
     }
@@ -48,7 +67,9 @@ class Logger {
   async success(info) {
     const data =
       `\n${this.perfix}${this.getDate()} [SUCCESS]` + info + this.suffix;
-    await this.write(data);
+    if (this.write) {
+      await this.write(data);
+    }
     if (this.console) {
       console.log(data);
     }
@@ -61,7 +82,9 @@ class Logger {
       info +
       `\n-------Error Stack End------- ` +
       this.suffix;
-    await this.write(data);
+    if (this.write) {
+      await this.write(data);
+    }
     if (this.console) {
       console.error(data);
     }
@@ -70,11 +93,11 @@ class Logger {
     try {
       const log = await fs.readFile(this.path);
       // 大于 1M 进行备份
-      if (log.length > 1 * 1024 * 1024 ) {
+      if (log.length > 1 * 1024 * 1024) {
         // 重命名 ： backuplog2021_01_12_12_01_12.log
         const newPath = path.resolve(
           path.dirname(this.path),
-          `backuplog${this.getDate().replace(/\s|:|-/g,"_")}.log`
+          `backuplog${this.getDate().replace(/\s|:|-/g, "_")}.log`
         );
         await fs.rename(this.path, newPath);
       }

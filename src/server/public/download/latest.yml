@@ -1,9 +1,0 @@
-version: 1.5.0-cb34fb3e
-files:
-  - url: iConfig_ADMIN_TEST Setup 1.5.0-cb34fb3e.exe
-    sha512: Vj65bIprxqcu3upFdb4iRwEKH6Ik3Xo2wIJ3eNIzoLXG6+jWljQ9SaR8XalpJ9u+21kFy8fZ/8gm9gCYKBzWKg==
-    size: 79192481
-path: iConfig_ADMIN_TEST Setup 1.5.0-cb34fb3e.exe
-sha512: Vj65bIprxqcu3upFdb4iRwEKH6Ik3Xo2wIJ3eNIzoLXG6+jWljQ9SaR8XalpJ9u+21kFy8fZ/8gm9gCYKBzWKg==
-releaseNotes: "V1.5版本是一次大型更新，旗舰产品产品K1 Power E980及K1 Power外设产品上架，并包含推送更新在内的多项功能性更新。\r\n\r\n功能性更新：\r\n 1.K1 Power E980产品上架！请在旗舰服务器产品线中进行选配；\r\n 2.K1 Power 外设产品上架！新产品线K1 Power 外设产品首批上架了CRi、N42等产品，可微调配置后存于方案并导出报价单；\r\n 3.各产品增加San Boot启动模式选项；（未完成）\r\n 4.现在保存IPC和XLS格式的输出文件时自带默认格式，不必再特殊注意文件扩展名了；\r\n 5.推送更新模块上线！现在联网开启客户端时将自动收到更新内容，而不必重新下载最新版客户端了。将收到的更新包括：\r\n  --部件库版本和价格版本。版本号置于设置标签卡中，版本号前半部分为具体更新日期，可供参考；\r\n  --客户端更新。收到客户端更新时将弹窗进行可选更新，若选择不更新，理论上仅为新功能缺失但不影响使用。部件数据依然会被更新为最新版本； \r\n  --在客户端左侧可看到更新内容公告栏，可高亮查询关键字，便于查看FC和产品相关历史更新消息； \r\n 6.供应链sheet中增加光盘相关信息；\r\n\t\r\n部件/产品/规则变化：\r\n\t1.K1 Power E980 产品上架；\r\n\t2.K1 Power 外设产品TF5加入（未上架）\r\n\t3.K1 Power 外设产品CRi上架；\r\n\t4.K1 Power 外设产品N42上架；\r\n\t5.K1 Power S924-G产品上架；\r\n\r\nBUG修复和调整：\r\n\t1.修复了E系列产品MES时，内存激活码可能由于进位导致减少的问题；（未完成）\r\n\t2.修复了MES时，新增的A6P中缺失光盘FC[3435]的问题；（未完成）\r\n\t3.修复了一个BUG，曾导致：E系列产品MES时，AIX和PowerVM的base激活core数不一致的问题；（未完成）"
-releaseDate: '2021-01-25T09:17:24.665Z'

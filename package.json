@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "express-formidable": "^1.2.0",
     "http-proxy-middleware": "^2.0.1",
+    "images-to-pdf": "^1.0.3",
     "js-md5": "^0.7.3",
     "mongoose": "^5.13.3",
     "multiparty": "^4.2.2",

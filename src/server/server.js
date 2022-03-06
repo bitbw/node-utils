@@ -1,7 +1,7 @@
 /*
  * @Description: Express Server
  * @LastEditors: Bowen
- * @LastEditTime: 2021-10-28 14:00:09
+ * @LastEditTime: 2021-11-03 09:55:23
  */
 
 const express = require("express");
@@ -73,7 +73,7 @@ app.post("/crashReporter", (req, res) => {
   });
 });
 
-app.post("/test/formdata", (req, res) => {
+app.post("/test/post", (req, res) => {
   res.send({
     code: "200",
     paramsVaildtor: null,
@@ -145,7 +145,7 @@ app.get("/cat", (req, res) => {
 // // dist 目录为优先公共目录
 // app.use(express.static(path.join(__dirname, "../../public/dist/")));
 // // 通过 public 下其他文件夹也可以获取内容
-// app.use(express.static(path.join(__dirname, "../../public/")));
+
 
 app.listen(8848, (e) => {
   if (!e) {
