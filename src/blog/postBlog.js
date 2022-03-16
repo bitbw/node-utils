@@ -3,7 +3,7 @@
  * @Autor: Bowen
  * @Date: 2021-10-09 16:56:43
  * @LastEditors: Bowen
- * @LastEditTime: 2022-01-12 13:39:08
+ * @LastEditTime: 2022-03-11 11:01:13
  */
 
 const fs = require("fs").promises;
@@ -13,7 +13,7 @@ const crypto = require("crypto");
 
 const { pushPost, getPost } = require("./api");
 
-const dirPath = "C:/E盘资料/my-blog/my-blog/source/_posts";
+const dirPath = "C:/BowenData/my-blog/my-blog/source/_posts";
 
 // 发布所有的文章
 async function hanleAllPushPost(dirPath) {
