@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "nodemon index.js",
     "preupdate": "git add . ",
-    "update": "git commit -m ",
+    "update": "git commit -m",
     "postupdate": "git pull && git push",
-    "preecho":"echo 'preecho'",
-    "postecho":"echo 'postecho'",
+    "preecho":"echo preecho",
+    "postecho":"echo postecho",
     "echo": "echo",
     "env": "cross-env ES5=true NODE_ENV=devlovepoment  node index.js"
   },

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #main,
+      html,
+      body {
+        width: 100%;
+      }
+      #main {
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main"></div>
+    <button onclick="dispose()">销毁</button>
+    <button onclick="create()">新建</button>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
+    <script>
+      var myChart;
+      const dispose = () => {
+        myChart && myChart.dispose();
+      };
+      const create = () => {
+        myChart = echarts.init(
+          document.getElementById("main"),
+          null
+          // 指定大小
+          //   {
+          //     width: 600,
+          //     height: 400,
+          //   }
+        );
+        // 监听图表容器的大小并改变图表大小
+        window.onresize = function () {
+          myChart.resize();
+        };
+        // 为图表设置特定的大小
+        myChart.resize({
+          width: 800,
+          height: 400,
+        });
+      };
+      document.addEventListener("DOMContentLoaded", create);
+      /* 
+      小贴士：在容器节点被销毁时，总是应调用 echartsInstance.dispose 以销毁实例释放资源，避免内存泄漏。
+      */
+    </script>
+  </body>
+</html>
