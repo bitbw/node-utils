@@ -14,11 +14,3 @@
   console.log("server", server);
 })();
 
-https://v.qq.com/x/page/h3310llutmb.html
-https://v.qq.com/x/page/f3310kz6u85.html
-https://v.qq.com/x/page/i3310q456k5.html
-https://v.qq.com/x/page/v3310ckl2i9.html
-https://v.qq.com/x/page/f3310vldg9b.html
-https://v.qq.com/x/page/c3310xec5gp.html
-https://v.qq.com/x/page/n3310t30h5k.html
-

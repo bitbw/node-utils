@@ -3,7 +3,7 @@
  * @Autor: Bowen
  * @Date: 2021-09-10 15:35:04
  * @LastEditors: Bowen
- * @LastEditTime: 2022-01-20 10:17:26
+ * @LastEditTime: 2022-05-10 14:52:00
  */
 
 const path = require("path");
@@ -12,7 +12,7 @@ const os = require("os");
 const sqlite3 = require("@journeyapps/sqlcipher").verbose();
 const targetPath = "C:/ls-project03/app/file/rule_backup"
 // const dbPath = path.resolve(os.homedir(), `iConfig/iconfig_user.config`);
-const dbPath = path.resolve(os.homedir(), `iConfig_TEST/iconfig_sys.config`);
+const dbPath = path.resolve(os.homedir(), `iConfig/iconfig_sys.config`);
 const DB = new sqlite3.Database(dbPath);
 const sqliteEscape = require("../utils/sql/sqliteEscape");
 const { handleExecSql, handleGetAll } = require("./index");

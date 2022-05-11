@@ -1,11 +1,10 @@
 /*
  * @Description: 测试async的执行
  * @LastEditors: Bowen
- * @LastEditTime: 2021-06-28 09:25:55
+ * @LastEditTime: 2022-05-06 09:39:26
  */
 
 (async function name(params) {
-  fetch;
   console.time("testForEach");
   //   await new Promise(r => setTimeout(r, 1000));
   console.timeEnd("testForEach");
