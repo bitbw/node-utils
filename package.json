@@ -8,8 +8,8 @@
     "preupdate": "git add . ",
     "update": "git commit -m",
     "postupdate": "git pull && git push",
-    "preecho":"echo preecho",
-    "postecho":"echo postecho",
+    "preecho": "echo preecho",
+    "postecho": "echo postecho",
     "echo": "echo",
     "env": "cross-env ES5=true NODE_ENV=devlovepoment  node index.js"
   },
@@ -40,6 +40,7 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
+    "inquirer": "^6.5.2",
     "ts-node": "^10.3.0",
     "typescript": "^4.4.3"
   },
