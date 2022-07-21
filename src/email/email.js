@@ -3,13 +3,18 @@
  * @Autor: Bowen
  * @Date: 2022-03-08 11:14:05
  * @LastEditors: Bowen
- * @LastEditTime: 2022-03-08 13:48:19
+ * @LastEditTime: 2022-06-30 09:27:18
  */
+
+/* 
+JGPDCTVGNHMYYCOV zhangbowen_xyz@163.com
+JLHMYQBARXNAVDNE iconfig_zbw@163.com
+*/
 const nodemailer = require("nodemailer");
 // 成功开启POP3/SMTP服务，在第三方客户端登录时，登录密码输入以下授权密码
-const auth = "ZPJZSGRKGONQZYTL";
+const auth = "JGPDCTVGNHMYYCOV";
 // async..await is not allowed in global scope, must use a wrapper
-async function main(options = {}) {
+async function sendEmail(options = {}) {
   // 结构参数
   const {
     to = "mail.bitbw@gmail.com", // list of receivers
@@ -36,6 +41,26 @@ async function main(options = {}) {
     subject,
     text,
     html,
+    attachments: [
+      // String attachment
+      {
+        filename: "notes.txt",
+        content: "Some notes about this e-mail",
+        contentType: "text/plain", // optional, would be detected from the filename
+      },
+
+      // Binary Buffer attachment
+      {
+        filename: "image.png",
+        content: Buffer.from(
+          "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/" +
+            "//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U" +
+            "g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC",
+          "base64"
+        ),
+        cid: "note@example.com", // should be as unique as possible
+      },
+    ],
   });
 
   console.log("Message sent: %s", info.messageId);
@@ -46,4 +71,6 @@ async function main(options = {}) {
   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 }
 
-module.exports = main;
+sendEmail()
+
+module.exports = sendEmail;
