@@ -3,117 +3,90 @@
  * @Autor: Bowen
  * @Date: 2021-10-09 16:56:43
  * @LastEditors: Bowen
- * @LastEditTime: 2022-03-11 11:01:13
+ * @LastEditTime: 2023-01-10 19:09:52
  */
 
 const fs = require("fs").promises;
 const path = require("path");
-const YAML = require("yaml");
 const crypto = require("crypto");
-
-const { pushPost, getPost } = require("./api");
-
-const dirPath = "C:/BowenData/my-blog/my-blog/source/_posts";
+const matter = require("gray-matter");
+const { newPost, editPost } = require("./api");
 
 // 发布所有的文章
-async function hanleAllPushPost(dirPath) {
+async function handleAllPushPost(dirPath) {
   let files = await fs.readdir(dirPath);
   for (const fileName of files) {
-    if (!/\.md/.test(fileName)) continue;
+    const filePath = path.resolve(dirPath, fileName);
+    // dir 继续递归
+    let stats = await fs.stat(filePath);
+    if (stats.isDirectory()) {
+      await handleAllPushPost(filePath);
+      continue;
+    }
     console.log("[********************************]");
     console.log("[fileName]", fileName);
-    const filePath = path.resolve(dirPath, fileName);
     // await new Promise((r) => setTimeout(r, 1000), true);
     await handlePushPost(filePath);
   }
 }
-// 将文章原始字符分解为obj数据
-function genArticleDate(articleOrigin) {
-  const datas = articleOrigin.split("---");
-  const temp = datas[1].replace(/\t/g, "");
-  let titleObj;
-  try {
-    titleObj = YAML.parse(temp);
-  } catch (error) {
-    console.log("[YAML解析错误]", error);
-    throw Error(error);
-  }
-  // datas.length > 3 为边际情况特殊处理一下
-  const contentData = datas.length > 3 ? datas.slice(2).join("---") : datas[2];
-  return {
-    titleObj,
-    contentData,
-  };
-}
-// 将obj数据合成文章
-function genArticleStr({ titleObj, contentData }) {
-  const titleStr = "\n" + YAML.stringify(titleObj);
-  const datas = ["", titleStr, contentData];
-  const str = datas.join("---");
-  return str;
-}
+
 // 根据path修改或者新建文章
 async function handlePushPost(filePath) {
   const fileName = path.basename(filePath);
-  const articleOrigin = await fs.readFile(filePath, "utf-8");
-  const { titleObj, contentData } = genArticleDate(articleOrigin);
+  // 解析 md 文件
+  const grayMatterFile = matter.read(filePath);
+  const { data, content } = grayMatterFile;
+  if (!data || !data.title) return;
+  // 获取当前哈希值 对比 之前的 哈希
   const hash = crypto.createHash("sha256");
-  hash.update(contentData);
-  // 当前hash
+  hash.update(content);
   let nowContentHash = hash.digest("hex");
-  let { cnblogs, hash: contentHash } = titleObj;
-  let res;
-  if (contentHash && contentHash == nowContentHash) {
-    console.log("[hash值未变退出当前循环]");
-    return;
-  }
+  let { cnblogs, hash: contentHash } = data;
+  // if (contentHash && contentHash == nowContentHash) {
+  //   console.log("[hash值未变退出当前循环]");
+  //   return;
+  // }
   // yaml中添加 hash
-  titleObj.hash = nowContentHash;
+  data.hash = nowContentHash;
+  // 文章数据
+  const post = {
+    description: content,
+    title: data.title,
+    categories: ['Markdown'],
+  };
+  let res;
   // 编辑
   if (cnblogs && cnblogs.postid) {
     console.log("[-------------修改-------------]");
-    res = await pushPost({
-      type: "edit",
-      content: contentData,
-      title: titleObj.title,
-      postid: cnblogs.postid,
-    });
-    if (res.methodResponse.fault) {
-      console.log(
-        "[修改失败]",
-        res.methodResponse.fault.value.struct.member[1].value.string
-      );
-      throw Error(res.methodResponse.fault.value.struct.member[1].value.string);
+    try {
+      res = await editPost(cnblogs.postid, post, true);
+    } catch (error) {
+      console.log("[修改失败]", error.message);
+      throw Error(error.message);
     }
-    console.log("[修改成功]", res.methodResponse.params.param.value.boolean);
+    console.log("[修改成功]", res);
   } else {
     console.log("[-------------新建-------------]");
-    titleObj.cnblogs = {};
-    res = await pushPost({
-      type: "add",
-      content: contentData,
-      title: titleObj.title,
-    });
-    res;
-    if (res.methodResponse.fault) {
-      console.log(
-        "[上传失败]",
-        res.methodResponse.fault.value.struct.member[1].value.string
-      );
-      throw Error(res.methodResponse.fault.value.struct.member[1].value.string);
+    data.cnblogs = {};
+    try {
+      res = await newPost(post, true);
+    } catch (error) {
+      console.log("[上传失败]", error.message);
+      throw Error(error.message);
     }
-    console.log("[上传成功]", res.methodResponse.params.param.value.string);
+    console.log("[上传成功]", res);
     // yaml中添加 postid
-    titleObj.cnblogs.postid = res.methodResponse.params.param.value.string;
+    data.cnblogs.postid = res;
   }
   // 回写数据
-  const str = genArticleStr({ titleObj, contentData });
+  const str = grayMatterFile.stringify();
   await fs.writeFile(filePath, str);
   console.log("[回写成功]", fileName);
   // 等待 1分钟 后继续下一个
-  await new Promise((r) => setTimeout(r, 35000, true));
+  await new Promise((r) => setTimeout(r, 3500, true));
 }
 
-// test
-// handlePushPost("C:/E盘资料/my-blog/my-blog/source/_posts/js中的微观任务和宏观任务.md");
-hanleAllPushPost(dirPath);
+(async () => {
+  await handleAllPushPost("C:/bowen/product/new-blog/docs");
+  // await handleAllPushPost("C:/bowen/product/new-blog/blog");
+})();
