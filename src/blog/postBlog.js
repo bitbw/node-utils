@@ -3,7 +3,7 @@
  * @Autor: Bowen
  * @Date: 2021-10-09 16:56:43
  * @LastEditors: Bowen
- * @LastEditTime: 2023-01-11 10:09:47
+ * @LastEditTime: 2023-01-11 10:36:42
  */
 
 const fs = require("fs").promises;
@@ -42,14 +42,15 @@ async function handlePushPost(filePath) {
   hash.update(content);
   let nowContentHash = hash.digest("hex");
   let { cnblogs, hash: contentHash } = data;
-  // if (contentHash && contentHash == nowContentHash) {
-  //   console.log("[hash值未变退出当前循环]");
-  //   return;
-  // }
+  if (contentHash && contentHash == nowContentHash) {
+    console.log("[hash值未变退出当前循环]");
+    return;
+  }
   // yaml中添加 hash
   data.hash = nowContentHash;
   // 文章数据
   const categories = Array.isArray(data.tags) ? data.tags : [];
+  // TODO: data.? 看自己的 md 文档是如何配置
   const post = {
     description: content,
     title: data.title,
@@ -57,7 +58,7 @@ async function handlePushPost(filePath) {
     categories: ["[Markdown]"].concat(categories),
   };
   let res;
-  // 编辑
+  // 请求
   if (cnblogs && cnblogs.postid) {
     console.log("[-------------修改-------------]");
     try {
@@ -89,6 +90,6 @@ async function handlePushPost(filePath) {
 }
 
 (async () => {
-  await handleAllPushPost("C:/bowen/product/new-blog/docs");
-  // await handleAllPushPost("C:/bowen/product/new-blog/blog");
+  // await handleAllPushPost("C:/bowen/product/new-blog/docs");
+  await handleAllPushPost("C:/bowen/product/new-blog/blog");
 })();
