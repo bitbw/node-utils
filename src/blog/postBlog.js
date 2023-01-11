@@ -3,7 +3,7 @@
  * @Autor: Bowen
  * @Date: 2021-10-09 16:56:43
  * @LastEditors: Bowen
- * @LastEditTime: 2023-01-10 19:09:52
+ * @LastEditTime: 2023-01-11 10:09:47
  */
 
 const fs = require("fs").promises;
@@ -49,10 +49,12 @@ async function handlePushPost(filePath) {
   // yaml中添加 hash
   data.hash = nowContentHash;
   // 文章数据
+  const categories = Array.isArray(data.tags) ? data.tags : [];
   const post = {
     description: content,
     title: data.title,
-    categories: ['Markdown'],
+    // 注意 要以 Markdown 格式发布 必须在 categories 中 添加  "[Markdown]"
+    categories: ["[Markdown]"].concat(categories),
   };
   let res;
   // 编辑
