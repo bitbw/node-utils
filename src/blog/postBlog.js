@@ -3,30 +3,38 @@
  * @Autor: Bowen
  * @Date: 2021-10-09 16:56:43
  * @LastEditors: Bowen
- * @LastEditTime: 2023-01-11 10:36:42
+ * @LastEditTime: 2023-01-13 15:07:43
  */
 
 const fs = require("fs").promises;
 const path = require("path");
 const crypto = require("crypto");
 const matter = require("gray-matter");
-const { newPost, editPost } = require("./api");
+const {
+  newPost,
+  editPost,
+  readAndUploadSM,
+  downloadAndUploadSM,
+} = require("./api");
 
 // 发布所有的文章
-async function handleAllPushPost(dirPath) {
+async function handleAllPushPost(dirPath, replace = false) {
   let files = await fs.readdir(dirPath);
   for (const fileName of files) {
     const filePath = path.resolve(dirPath, fileName);
     // dir 继续递归
     let stats = await fs.stat(filePath);
     if (stats.isDirectory()) {
-      await handleAllPushPost(filePath);
+      await handleAllPushPost(filePath, replace);
       continue;
     }
     console.log("[********************************]");
     console.log("[fileName]", fileName);
-    // await new Promise((r) => setTimeout(r, 1000), true);
-    await handlePushPost(filePath);
+    if (replace) {
+      await replaceImgUrl(filePath);
+    } else {
+      await handlePushPost(filePath);
+    }
   }
 }
 
@@ -89,7 +97,66 @@ async function handlePushPost(filePath) {
   await new Promise((r) => setTimeout(r, 3500, true));
 }
 
+// 替换 md 文件中的图片 url 地址
+async function replaceImgUrl(filePath) {
+  const fileName = path.basename(filePath);
+  // 解析 md 文件 
+  const grayMatterFile = matter.read(filePath);
+  let { data, content } = grayMatterFile;
+  if (!data || !data.title) return;
+  const reg = /!\[.*\]\((.*)\)/g;
+  const reg2 = /!\[.*\]\((.*)\)/;
+  const imgUrls = content.match(reg);
+  if (!imgUrls || !imgUrls.length) return content;
+  for (const [index, imgUrl] of imgUrls.entries()) {
+    const url = imgUrl.match(reg2)[1];
+    const reg = new RegExp("https://bitbw.top/public/img/my_gallery/");
+    if (!reg.test(url)) continue;
+    console.log(`[替换URL ${index + 1}]`, url);
+    try {
+      const newUrl = await uploadImg(url, filePath);
+      if (newUrl.message) {
+        throw Error(newUrl.message);
+      }
+      if (!newUrl) {
+        throw Error("没有返回 newUrl");
+      }
+      content = content.replace(url, newUrl);
+      console.log(`[替换成功 ${index + 1}]`, newUrl);
+    } catch (error) {
+      console.log(`[替换失败 ${index + 1}] `, error.message);
+    }
+  }
+  grayMatterFile.content = content;
+  const str = grayMatterFile.stringify();
+  await fs.writeFile(filePath, str);
+  console.log("[回写成功]", fileName);
+}
+// 下载并上传图片
+async function uploadImg(imgPath, filePath) {
+  // 测试是否为 url
+  const httpTest = /^http/;
+  // 网络图片
+  if (httpTest.test(imgPath)) {
+    return downloadAndUploadSM(imgPath);
+  } else {
+    let curPath;
+    if (path.isAbsolute(imgPath)) {
+      curPath = imgPath;
+    } else {
+      const dirname = path.dirname(filePath);
+      curPath = path.resolve(dirname, imgPath);
+    }
+    return readAndUploadSM(curPath);
+  }
+}
+
 (async () => {
   // await handleAllPushPost("C:/bowen/product/new-blog/docs");
-  await handleAllPushPost("C:/bowen/product/new-blog/blog");
+  // await handleAllPushPost("C:/bowen/product/new-blog/blog");
+  await handleAllPushPost("C:/bowen/product/new-blog/docs", true);
+  await handleAllPushPost("C:/bowen/product/new-blog/blog", true);
+  // await replaceImgUrl(
+  //   "C:/bowen/product/new-blog/blog/转载-node-pre-gyp以及node-gyp的源码简单解析（以安装sqlite3为例）/test.md"
+  // );
 })();
