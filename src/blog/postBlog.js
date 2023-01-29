@@ -3,7 +3,7 @@
  * @Autor: Bowen
  * @Date: 2021-10-09 16:56:43
  * @LastEditors: Bowen
- * @LastEditTime: 2023-01-13 15:07:43
+ * @LastEditTime: 2023-01-17 11:19:09
  */
 
 const fs = require("fs").promises;
@@ -17,7 +17,12 @@ const {
   downloadAndUploadSM,
 } = require("./api");
 
-// 发布所有的文章
+/**
+ * @description: 发布所有的文章
+ * @param {*} dirPath md 文件路径
+ * @param {*} replace 是否替换图片
+ * @return {*}
+ */
 async function handleAllPushPost(dirPath, replace = false) {
   let files = await fs.readdir(dirPath);
   for (const fileName of files) {
@@ -100,7 +105,7 @@ async function handlePushPost(filePath) {
 // 替换 md 文件中的图片 url 地址
 async function replaceImgUrl(filePath) {
   const fileName = path.basename(filePath);
-  // 解析 md 文件 
+  // 解析 md 文件
   const grayMatterFile = matter.read(filePath);
   let { data, content } = grayMatterFile;
   if (!data || !data.title) return;
@@ -110,21 +115,20 @@ async function replaceImgUrl(filePath) {
   if (!imgUrls || !imgUrls.length) return content;
   for (const [index, imgUrl] of imgUrls.entries()) {
     const url = imgUrl.match(reg2)[1];
-    const reg = new RegExp("https://bitbw.top/public/img/my_gallery/");
-    if (!reg.test(url)) continue;
     console.log(`[替换URL ${index + 1}]`, url);
     try {
       const newUrl = await uploadImg(url, filePath);
+      if (!newUrl) {
+        console.log(`[不符合替换条件 URL ${index + 1}]`, url);
+        continue;
+      }
       if (newUrl.message) {
         throw Error(newUrl.message);
-      }
-      if (!newUrl) {
-        throw Error("没有返回 newUrl");
       }
       content = content.replace(url, newUrl);
       console.log(`[替换成功 ${index + 1}]`, newUrl);
     } catch (error) {
-      console.log(`[替换失败 ${index + 1}] `, error.message);
+      console.log(`[替换失败 ${index + 1}]`, error.message);
     }
   }
   grayMatterFile.content = content;
@@ -138,6 +142,8 @@ async function uploadImg(imgPath, filePath) {
   const httpTest = /^http/;
   // 网络图片
   if (httpTest.test(imgPath)) {
+    const reg = new RegExp("https://bitbw.top/public/img/my_gallery/");
+    if (!reg.test(imgPath)) return;
     return downloadAndUploadSM(imgPath);
   } else {
     let curPath;
